@@ -1,6 +1,5 @@
 package lw.learn.offer;
 
-import jdk.nashorn.internal.ir.IfNode;
 import org.junit.Test;
 
 /**

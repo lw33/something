@@ -1,7 +1,5 @@
 package lw.learn.lc.easy;
 
-import java.util.List;
-
 /**
  * @Author lw
  * @Date 2018-10-01 14:41:17

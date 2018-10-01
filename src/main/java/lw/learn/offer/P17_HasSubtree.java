@@ -2,8 +2,6 @@ package lw.learn.offer;
 
 import lw.learn.offer.util.TreeNode;
 
-import java.util.HashMap;
-
 /**
  * @Author lw
  * @Date 2018-10-01 19:23:37
