@@ -30,7 +30,6 @@ public class P21_IsPopOrder {
                 stack.push(pushA[i]);
             }
         }
-
         while (!stack.isEmpty()) {
             if (stack.pop() != popA[j++]) {
                 return false;
