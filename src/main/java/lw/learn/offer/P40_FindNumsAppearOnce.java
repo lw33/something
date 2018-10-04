@@ -11,7 +11,7 @@ public class P40_FindNumsAppearOnce {
 
     public void FindNumsAppearOnce(int[] array, int num1[], int num2[]) {
 
-        if (array == null || array.length % 2 == 1) {
+        if (array == null || array.length == 0 || array.length % 2 == 1) {
             return;
         }
 
@@ -19,8 +19,20 @@ public class P40_FindNumsAppearOnce {
         for (int i = 1; i < array.length; i++) {
             num ^= array[i];
         }
+        int tmp = 1;
+        while ((num & 1) != 1) {
+            num >>= 1;
+            tmp <<= 1;
+        }
 
-        
+        for (int i = 0; i < array.length; i++) {
+
+            if ((array[i] & tmp) == 0) {
+                num1[0] ^= array[i];
+            } else {
+                num2[0] ^= array[i];
+            }
+        }
     }
 
 }
