@@ -2,6 +2,7 @@ package lw.learn.offer;
 
 import lw.learn.offer.util.TreeNode;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -50,4 +51,38 @@ public class P60_PrintTreeEveryLevel {
         return res;
     }
 
+    public ArrayList<ArrayList<Integer>> print(TreeNode pRoot) {
+
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+
+        if (pRoot == null) {
+            return res;
+        }
+        TreeNode last = pRoot;
+        Queue<TreeNode> queue = new LinkedList<>();
+        TreeNode nLast = null;
+        ArrayList<Integer> nodes = new ArrayList<>();
+
+        queue.offer(pRoot);
+        while (!queue.isEmpty()) {
+            TreeNode poll = queue.poll();
+            if (poll.left != null) {
+                nLast = poll.left;
+                queue.offer(nLast);
+            }
+
+            if (poll.right != null) {
+                nLast = poll.right;
+                queue.offer(nLast);
+            }
+            nodes.add(poll.val);
+            if (poll == last) {
+                last = nLast;
+                res.add(nodes);
+                nodes = new ArrayList<>();
+            }
+        }
+
+        return res;
+    }
 }

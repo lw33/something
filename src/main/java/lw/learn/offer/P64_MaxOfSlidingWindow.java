@@ -1,6 +1,10 @@
 package lw.learn.offer;
 
+import lw.learn.offer.util.ListNode;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * @Author lw
@@ -16,7 +20,51 @@ public class P64_MaxOfSlidingWindow {
     public ArrayList<Integer> maxInWindows(int[] num, int size) {
 
         ArrayList<Integer> res = new ArrayList<>();
+        if (num.length < size || size < 1) {
+            return res;
+        }
 
+        LinkedList<Integer> dbQueue = new LinkedList<>();
+
+        for (int i = 0; i < num.length; i++) {
+            while (!dbQueue.isEmpty() && num[dbQueue.peekLast()] <= num[i]) {
+                dbQueue.pollLast();
+            }
+            dbQueue.offerLast(i);
+
+            if (i - size == dbQueue.peekFirst()) {
+                dbQueue.pollFirst();
+            }
+
+            if (i >= size - 1) {
+                res.add(num[dbQueue.peekFirst()]);
+            }
+
+        }
         return res;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
