@@ -1,8 +1,5 @@
 package lw.learn.offer;
 
-import lw.learn.offer.util.ListNode;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedList;
 

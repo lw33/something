@@ -2,7 +2,6 @@ package lw.learn.offer;
 
 import lw.learn.offer.util.TreeNode;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;

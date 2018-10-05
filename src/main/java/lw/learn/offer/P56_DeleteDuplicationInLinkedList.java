@@ -1,7 +1,6 @@
 package lw.learn.offer;
 
 import lw.learn.offer.util.ListNode;
-import org.junit.Test;
 
 /**
  * @Author lw

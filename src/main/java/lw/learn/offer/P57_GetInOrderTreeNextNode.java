@@ -1,6 +1,5 @@
 package lw.learn.offer;
 
-import lw.learn.offer.util.ListNode;
 import lw.learn.offer.util.TreeLinkNode;
 
 /**

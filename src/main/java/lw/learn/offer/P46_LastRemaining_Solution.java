@@ -1,7 +1,6 @@
 package lw.learn.offer;
 
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * @Author lw

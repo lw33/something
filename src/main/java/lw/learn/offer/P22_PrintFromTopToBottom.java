@@ -3,10 +3,8 @@ package lw.learn.offer;
 import lw.learn.offer.util.TreeNode;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * @Author lw
