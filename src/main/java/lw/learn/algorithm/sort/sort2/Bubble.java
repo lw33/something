@@ -1,4 +1,5 @@
-package lw.learn.algorithm.sort.sort1;
+package lw.learn.algorithm.sort.sort2;
+
 
 import lw.learn.algorithm.sort.SortUtil;
 
@@ -25,7 +26,6 @@ public class Bubble {
 
     }
 
-
     public static int[] sort(int[] arr) {
 
         for (int i = arr.length - 1; i > 0; i--) {
@@ -35,7 +35,9 @@ public class Bubble {
                 }
             }
         }
-
         return arr;
     }
+
+
+
 }
