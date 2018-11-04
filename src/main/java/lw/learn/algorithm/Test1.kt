@@ -1,5 +1,7 @@
 package lw.learn.algorithm
 
+import org.junit.Test
+
 /**
  * @Author lw
  * @Date 2018-10-06 17:30:49
@@ -28,4 +30,5 @@ object Test {
         val end1 = System.currentTimeMillis()
         println(end1 - start1)
     }
+
 }

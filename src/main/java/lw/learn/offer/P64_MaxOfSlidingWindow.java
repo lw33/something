@@ -40,28 +40,5 @@ public class P64_MaxOfSlidingWindow {
         }
         return res;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
