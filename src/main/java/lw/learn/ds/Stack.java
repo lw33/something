@@ -15,4 +15,6 @@ public interface Stack<E> {
     int search(E e);
 
     boolean isEmpty();
+
+    int size();
 }

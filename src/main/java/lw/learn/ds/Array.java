@@ -101,6 +101,18 @@ public class Array<E> {
         return data[index];
     }
 
+    public E getFirst() {
+        return get(0);
+    }
+
+    public E getLast() {
+        return get(size - 1);
+    }
+
+    public int size() {
+        return size;
+    }
+
     public boolean isEmpty() {
         return size == 0;
     }
@@ -118,7 +130,7 @@ public class Array<E> {
 
     private void resize(int newCapacity) {
         E[] e = (E[]) new Object[newCapacity];
-        for (int i = 0; i < data.length; i++) {
+        for (int i = 0; i < size; i++) {
             e[i] = data[i];
         }
         data = e;

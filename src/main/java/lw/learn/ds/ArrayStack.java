@@ -7,11 +7,10 @@ package lw.learn.ds;
 public class ArrayStack<E> implements Stack<E>{
 
     private Array<E> stack;
-    private int size;
 
-    public ArrayStack(int size) {
+    public ArrayStack(int capacity) {
 
-        stack = new Array<>(size);
+        stack = new Array<>(capacity);
 
     }
 
@@ -24,14 +23,12 @@ public class ArrayStack<E> implements Stack<E>{
     @Override
     public void push(E e) {
         stack.addFirst(e);
-        size++;
     }
 
     @Override
     public E pop() {
         if (!isEmpty()) {
             E e = stack.removeFirst();
-            size--;
             return e;
         }
         return null;
@@ -52,7 +49,12 @@ public class ArrayStack<E> implements Stack<E>{
 
     @Override
     public boolean isEmpty() {
-        return size == 0;
+        return stack.isEmpty();
+    }
+
+    @Override
+    public int size() {
+        return stack.size();
     }
 
     @Override
