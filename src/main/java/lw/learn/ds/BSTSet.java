@@ -20,21 +20,21 @@ public class BSTSet<E extends Comparable<E>> implements Set<E> {
 
     @Override
     public E remove(E e) {
-        return null;
+        return bst.remove(e);
     }
 
     @Override
     public boolean contains(E e) {
-        return false;
+        return bst.contains(e);
     }
 
     @Override
     public int size() {
-        return 0;
+        return bst.size();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return bst.isEmpty();
     }
 }

@@ -6,7 +6,7 @@ package lw.learn.ds;
  **/
 public class DLinkedList<E> {
 
-    private class Node<E> {
+    private class Node {
 
         public E e;
         public Node next;
