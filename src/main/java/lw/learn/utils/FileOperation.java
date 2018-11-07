@@ -1,4 +1,4 @@
-package lw.learn.test.ds;
+package lw.learn.utils;
 
 import java.io.BufferedInputStream;
 import java.io.File;
