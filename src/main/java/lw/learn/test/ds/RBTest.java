@@ -6,7 +6,9 @@ import lw.learn.utils.TimeHelper;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Timer;
+import java.util.TreeSet;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
@@ -56,6 +58,13 @@ public class RBTest {
         System.out.println(timeHelper.duration(new Add(), rbSet, n));
         System.out.println(timeHelper.duration(new Add(), bstSet, n));
         System.out.println(timeHelper.duration(new Add(), listSet, n));
+
+        HashMap<Add, Add> hashMap = new HashMap<>();
+        hashMap.put(new Add(), new Add());
+        hashMap.put(new Add(), new Add());
+        hashMap.put(new Add(), new Add());
+        hashMap.put(new Add(), new Add());
+        hashMap.put(new Add(), new Add());
     }
 
     class Add implements BiConsumer<Set<Integer>, Integer> {
