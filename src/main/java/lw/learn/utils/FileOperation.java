@@ -1,5 +1,7 @@
 package lw.learn.utils;
 
+import lw.learn.ds.Graph;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -68,5 +70,42 @@ public class FileOperation {
             if (Character.isLetter(s.charAt(i)))
                 return i;
         return s.length();
+    }
+
+    public static void readGrap(Graph graph, String filename) {
+        if (filename == null) {
+            System.out.println("filename is null or words is null");
+            return;
+        }
+
+        // 文件读取
+        Scanner scanner;
+
+        try {
+            URL resource = FileOperation.class.getClassLoader().getResource(filename);
+            File file = new File(resource.getFile());
+            if (file.exists()) {
+                FileInputStream fis = new FileInputStream(file);
+                scanner = new Scanner(new BufferedInputStream(fis), "UTF-8");
+                scanner.useLocale(Locale.ENGLISH);
+            } else
+                return;
+        } catch (IOException ioe) {
+            System.out.println("Cannot open " + filename);
+            return;
+        }
+        String matedata = scanner.nextLine();
+        String[] strs = matedata.split(" ");
+        int n = Integer.parseInt(strs[0]);
+        int m = Integer.parseInt(strs[1]);
+
+        while (scanner.hasNextLine()) {
+            String edge = scanner.nextLine();
+            String[] s = edge.split(" ");
+            int v = Integer.parseInt(s[0]);
+            int w = Integer.parseInt(s[1]);
+            graph.addEdge(v, w);
+        }
+
     }
 }

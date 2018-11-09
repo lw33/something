@@ -57,7 +57,7 @@ public class MapTest {
 
 
             start = System.currentTimeMillis();
-            HashMap<String, Integer> map3 = new HashMap<>();
+            HashMap<String, Integer> map3 = new HashMap<>(10240);
             for (String s : words1) {
                 if (map3.contains(s)) {
                     map3.set(s, map3.get(s) + 1);
