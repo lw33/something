@@ -65,6 +65,7 @@ public class RBTest {
         hashMap.put(new Add(), new Add());
         hashMap.put(new Add(), new Add());
         hashMap.put(new Add(), new Add());
+
     }
 
     class Add implements BiConsumer<Set<Integer>, Integer> {

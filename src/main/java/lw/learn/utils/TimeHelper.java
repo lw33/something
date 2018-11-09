@@ -1,7 +1,6 @@
 package lw.learn.utils;
 
 import java.util.function.BiConsumer;
-import java.util.function.Supplier;
 
 /**
  * @Author lw

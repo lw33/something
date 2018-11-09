@@ -8,8 +8,7 @@ public class Test {
     
     @org.junit.Test
     public void test() {
-        for (int i = 0; i < 199; i++) {
-            
-        }
+        System.out.println(Double.valueOf(3.234).hashCode());
+        System.out.println(Double.valueOf(3.234));
     }
 }
