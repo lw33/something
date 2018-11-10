@@ -16,7 +16,7 @@ public interface Graph {
     Iterator<Integer> iterator(int v);
 
     static void printGraph(Graph graph) {
-        System.out.println(graph.V());
+        System.out.println(graph.V() + " vertexes -> ");
         for (int i = 0; i < graph.V(); i++) {
             System.out.print(i + ": ");
             graph.iterator(i).forEachRemaining(w -> System.out.print(w + " "));

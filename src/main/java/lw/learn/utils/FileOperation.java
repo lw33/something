@@ -6,6 +6,8 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -72,10 +74,10 @@ public class FileOperation {
         return s.length();
     }
 
-    public static void readGrap(Graph graph, String filename) {
+    public static Graph readGrap(Class< ? extends Graph> graph,boolean directed, String filename)  {
         if (filename == null) {
             System.out.println("filename is null or words is null");
-            return;
+            return null;
         }
 
         // 文件读取
@@ -89,23 +91,30 @@ public class FileOperation {
                 scanner = new Scanner(new BufferedInputStream(fis), "UTF-8");
                 scanner.useLocale(Locale.ENGLISH);
             } else
-                return;
+                return null;
         } catch (IOException ioe) {
             System.out.println("Cannot open " + filename);
-            return;
+            return null;
         }
         String matedata = scanner.nextLine();
         String[] strs = matedata.split(" ");
         int n = Integer.parseInt(strs[0]);
-        int m = Integer.parseInt(strs[1]);
-
-        while (scanner.hasNextLine()) {
-            String edge = scanner.nextLine();
-            String[] s = edge.split(" ");
-            int v = Integer.parseInt(s[0]);
-            int w = Integer.parseInt(s[1]);
-            graph.addEdge(v, w);
+        Graph g = null;
+        try {
+            g = graph.getDeclaredConstructor(int.class, boolean.class).newInstance(n, directed);
+            while (scanner.hasNextLine()) {
+                String edge = scanner.nextLine();
+                String[] s = edge.split(" ");
+                int v = Integer.parseInt(s[0]);
+                int w = Integer.parseInt(s[1]);
+                g.addEdge(v, w);
+            }
+            return g;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
+
 
     }
 }
