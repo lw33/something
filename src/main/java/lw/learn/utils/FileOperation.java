@@ -1,13 +1,14 @@
 package lw.learn.utils;
 
 import lw.learn.ds.Graph;
+import lw.learn.ds.wg.WeightGraph;
+import org.jetbrains.annotations.Nullable;
+import org.junit.Test;
 
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -28,9 +29,10 @@ public class FileOperation {
         }
 
         // 文件读取
-        Scanner scanner;
-
-        try {
+        Scanner scanner = getScanner(filename);
+        if (scanner == null)
+            return false;
+        /*try {
             URL resource = FileOperation.class.getClassLoader().getResource(filename);
             File file = new File(resource.getFile());
             if (file.exists()) {
@@ -42,7 +44,7 @@ public class FileOperation {
         } catch (IOException ioe) {
             System.out.println("Cannot open " + filename);
             return false;
-        }
+        }*/
 
         // 简单分词
         // 这个分词方式相对简陋, 没有考虑很多文本处理中的特殊问题
@@ -75,6 +77,58 @@ public class FileOperation {
     }
 
     public static Graph readGrap(Class< ? extends Graph> graph,boolean directed, String filename)  {
+
+
+        // 文件读取
+        Scanner scanner = getScanner(filename);
+        if (scanner == null)
+            return null;
+
+        String matedata = scanner.nextLine();
+        String[] strs = matedata.split(" ");
+        int n = Integer.parseInt(strs[0]);
+        Graph g = null;
+        try {
+            g = graph.getDeclaredConstructor(int.class, boolean.class).newInstance(n, directed);
+            while (scanner.hasNextLine()) {
+                String edge = scanner.nextLine();
+                String[] s = edge.split(" ");
+                int v = Integer.parseInt(s[0]);
+                int w = Integer.parseInt(s[1]);
+                g.addEdge(v, w);
+            }
+            return g;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public static WeightGraph readWeightGrap(Class< ? extends WeightGraph> graph, boolean directed, String filename)  {
+        Scanner scanner = getScanner(filename);
+        if (scanner == null) return null;
+        String matedata = scanner.nextLine();
+        String[] strs = matedata.split(" ");
+        int n = Integer.parseInt(strs[0]);
+        WeightGraph g = null;
+        try {
+            g = graph.getDeclaredConstructor(int.class, boolean.class).newInstance(n, directed);
+            while (scanner.hasNextLine()) {
+                String edge = scanner.nextLine();
+                String[] s = edge.split(" ");
+                int v = Integer.parseInt(s[0]);
+                int w = Integer.parseInt(s[1]);
+                double weight = Double.parseDouble(s[2]);
+                g.addEdge(v, w, weight);
+            }
+            return g;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Nullable
+    private static Scanner getScanner(String filename) {
         if (filename == null) {
             System.out.println("filename is null or words is null");
             return null;
@@ -96,25 +150,12 @@ public class FileOperation {
             System.out.println("Cannot open " + filename);
             return null;
         }
-        String matedata = scanner.nextLine();
-        String[] strs = matedata.split(" ");
-        int n = Integer.parseInt(strs[0]);
-        Graph g = null;
-        try {
-            g = graph.getDeclaredConstructor(int.class, boolean.class).newInstance(n, directed);
-            while (scanner.hasNextLine()) {
-                String edge = scanner.nextLine();
-                String[] s = edge.split(" ");
-                int v = Integer.parseInt(s[0]);
-                int w = Integer.parseInt(s[1]);
-                g.addEdge(v, w);
-            }
-            return g;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return scanner;
+    }
 
 
+    @Test
+    public void test() {
+        System.out.println(Double.parseDouble(".21"));
     }
 }
