@@ -1,11 +1,14 @@
-package lw.learn.ds.wg;
+package lw.learn.algorithm.graph;
 
-import lw.learn.algorithm.sort.sort2.Merge;
 import lw.learn.ds.Merger;
 import lw.learn.ds.UnionFind;
+import lw.learn.ds.wg.Edge;
+import lw.learn.ds.wg.WeightGraph;
 
-import java.util.*;
-import java.util.function.Consumer;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * @Author lw
@@ -39,7 +42,7 @@ public class KruskalMST<T> {
                 continue;
 
             mst.add(edg);
-            mstWeigth = merger.meger(mstWeigth, edg.weight());
+            mstWeigth = merger.merge(mstWeigth, edg.weight());
             unionFind.union(edg.w(), edg.v());
         }
     }

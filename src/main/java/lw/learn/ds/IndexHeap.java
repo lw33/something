@@ -2,6 +2,7 @@ package lw.learn.ds;
 
 import lw.learn.algorithm.sort.SortUtil;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 /**
@@ -27,6 +28,7 @@ public class IndexHeap<Item> {
         this.comparator = comparator;
         indexes = new int[capacity];
         reverse = new int[capacity];
+        Arrays.fill(reverse, -1);
         data = (Item[]) new Object[capacity];
     }
 
@@ -56,6 +58,7 @@ public class IndexHeap<Item> {
         SortUtil.swap(indexes, size, 0);
         SortUtil.swap(reverse, indexes[size], indexes[0]);
         //indexes[0] = indexes[size];
+        reverse[indexes[size]] = -1;
         shifDown(0);
         return item;
     }
@@ -75,6 +78,10 @@ public class IndexHeap<Item> {
         shifUp(reverse[index]);
         shifDown(reverse[index]);
 
+    }
+
+    public boolean contains(int index) {
+        return reverse[index] != -1;
     }
 
 

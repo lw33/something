@@ -34,7 +34,7 @@ public class SegmentTree<E> {
         int mid = start + ((end - start) >> 1);
         buildSegmentTree(left, start, mid);
         buildSegmentTree(right, mid + 1, end);
-        tree[index] = merger.meger(tree[left], tree[right]);
+        tree[index] = merger.merge(tree[left], tree[right]);
     }
 
     public int size() {
@@ -73,7 +73,7 @@ public class SegmentTree<E> {
         } else {
             set(left, l, mid, index, e);
         }
-        tree[i] = merger.meger(tree[left], tree[right]);
+        tree[i] = merger.merge(tree[left], tree[right]);
     }
 
     private E query(int index, int l, int r, int start, int end) {
@@ -92,7 +92,7 @@ public class SegmentTree<E> {
 
             E leftQ = query(left, l, mid, start, mid);
             E rightQ = query(right, mid + 1, r, mid + 1, end);
-            return merger.meger(leftQ, rightQ);
+            return merger.merge(leftQ, rightQ);
         }
     }
 

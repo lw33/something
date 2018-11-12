@@ -1,7 +1,10 @@
-package lw.learn.ds.wg;
+package lw.learn.algorithm.graph;
 
 
 import lw.learn.ds.Merger;
+import lw.learn.ds.wg.Edge;
+import lw.learn.ds.wg.SparseGraph;
+import lw.learn.ds.wg.WeightGraph;
 import lw.learn.utils.FileOperation;
 
 import java.util.*;
@@ -40,7 +43,7 @@ public class LazyPrimMST<T> {
             if (marked[poll.v()] == marked[poll.w()])
                 continue;
             mst.add(poll);
-            mstWeight = merger.meger(poll.weight(), mstWeight);
+            mstWeight = merger.merge(poll.weight(), mstWeight);
             if (!marked[poll.v()])
                 visit(poll.v());
             else

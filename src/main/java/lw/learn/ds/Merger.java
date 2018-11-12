@@ -7,5 +7,5 @@ package lw.learn.ds;
 @FunctionalInterface
 public interface Merger<E> {
 
-    E meger(E e1, E e2);
+    E merge(E e1, E e2);
 }
