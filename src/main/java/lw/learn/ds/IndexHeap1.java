@@ -89,9 +89,9 @@ public class IndexHeap1<Item> {
 
     private void shifDown(int k) {
 
-        while (2 * k <= size) {
+        int left = left(k);
+        while (left < size) {
 
-            int left = left(k);
             int right = left + 1;
             if (right <= size && comparator.compare(data[indexes[left]], data[indexes[right]]) < 0)
                 left = right;
@@ -101,7 +101,7 @@ public class IndexHeap1<Item> {
 
             SortUtil.swap(indexes, k, left);
             k = left;
-
+            left = left(k);
         }
     }
 

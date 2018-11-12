@@ -55,9 +55,15 @@ public class IndexHeap<Item> {
         size--;
         SortUtil.swap(indexes, size, 0);
         SortUtil.swap(reverse, indexes[size], indexes[0]);
-        indexes[0] = indexes[size];
+        //indexes[0] = indexes[size];
         shifDown(0);
         return item;
+    }
+
+    public int popIndex() {
+        int index = indexes[0];
+        pop();
+        return index;
     }
 
     public Item peek() {
@@ -85,11 +91,12 @@ public class IndexHeap<Item> {
 
     private void shifDown(int k) {
 
-        while (2 * k <= size) {
+        int left = left(k);
+        while (left < size) {
 
-            int i = left(k);
+            int i = left;
             int j = i + 1;
-            if (j <= size && comparator.compare(data[indexes[i]], data[indexes[j]]) < 0)
+            if (j < size && comparator.compare(data[indexes[i]], data[indexes[j]]) < 0)
                 i = j;
 
             if (comparator.compare(data[indexes[i]], data[indexes[k]]) <= 0)
@@ -98,6 +105,7 @@ public class IndexHeap<Item> {
             SortUtil.swap(indexes, i, k);
             SortUtil.swap(reverse, indexes[i], indexes[k]);
             k = i;
+            left = left(k);
         }
 
     }

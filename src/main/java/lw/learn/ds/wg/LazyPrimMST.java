@@ -10,7 +10,7 @@ import java.util.*;
  * @Author lw
  * @Date 2018-11-10 16:27:50
  **/
-public class LazyPrimeMST<T> {
+public class LazyPrimMST<T> {
 
     private WeightGraph<T> graph;
     private PriorityQueue<Edge<T>> priorityQueue;
@@ -27,7 +27,7 @@ public class LazyPrimeMST<T> {
      * @param comparator
      * @param mstInit
      */
-    public LazyPrimeMST(WeightGraph<T> graph, Merger<T> merger, Comparator<Edge<T>> comparator, T mstInit) {
+    public LazyPrimMST(WeightGraph<T> graph, Merger<T> merger, Comparator<Edge<T>> comparator, T mstInit) {
         this.mstWeight = mstInit;
         this.merger = merger;
         this.graph = graph;
@@ -69,7 +69,7 @@ public class LazyPrimeMST<T> {
 
     public static void main(String[] args) {
         WeightGraph<Double> weightGraph = FileOperation.readWeightGrap(SparseGraph.class, false, "wg1.txt");
-        LazyPrimeMST<Double> primeMST = new LazyPrimeMST<>(weightGraph, (e1, e2) -> e1 + e2, (edg1, edg2) -> edg1.weight().equals(edg2.weight()) ? 0 : edg1.weight() > edg2.weight() ? 1 : -1, 0.0);
+        LazyPrimMST<Double> primeMST = new LazyPrimMST<>(weightGraph, (e1, e2) -> e1 + e2, (edg1, edg2) -> edg1.weight().equals(edg2.weight()) ? 0 : edg1.weight() > edg2.weight() ? 1 : -1, 0.0);
         for (Edge<Double> doubleEdge : primeMST.mst()) {
             System.out.print(doubleEdge.v() + "--" + doubleEdge.w() + ": " + doubleEdge.weight());
             System.out.println();
