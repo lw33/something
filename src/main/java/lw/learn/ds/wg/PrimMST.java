@@ -74,7 +74,9 @@ public class PrimMST<T extends Comparable<T>> {
     }
 
     public static void main(String[] args) {
-        WeightGraph<Double> weightGraph = FileOperation.readWeightGrap(SparseGraph.class, false, "wg2.txt");
+        WeightGraph<Double> weightGraph = FileOperation.readWeightGrap(SparseGraph.class, false, "wg1.txt");
+
+        Comparator<Edge<Double>> comparator = (edg1, edg2) -> edg1.weight().equals(edg2.weight()) ? 0 : edg1.weight() > edg2.weight() ? 1 : -1;
         System.out.println(weightGraph.V());
         long start = System.currentTimeMillis();
         LazyPrimMST<Double> lazyPrimMST= new LazyPrimMST<>(weightGraph, (e1, e2) -> e1 + e2, (edg1, edg2) -> edg1.weight().equals(edg2.weight()) ? 0 : edg1.weight() > edg2.weight() ? 1 : -1, 0.0);
@@ -91,6 +93,11 @@ public class PrimMST<T extends Comparable<T>> {
 
         System.out.println("Prim MST: " + primeMST.mstWeight());
 
+        start = System.currentTimeMillis();
+        KruskalMST<Double> kruskalMST = new KruskalMST<>(weightGraph, comparator, (e1, e2) -> e1 + e2, 0.0);
+        end = System.currentTimeMillis();
+        System.out.println("KrusKal Duration: " + (end - start));
+        System.out.println("KrusKal MST: " + kruskalMST.mstWeight());
 
     }
 }

@@ -23,6 +23,7 @@ public class UnionFind {
 
     public int find(int p) {
         int i = 0;
+        // 路径压缩
         while (p != parent[p]) {
             parent[p] = parent[parent[p]];
             p = parent[p];
