@@ -1,7 +1,5 @@
 package lw.learn.lc.easy;
 
-import lw.learn.ds.SegmentTree;
-
 /**
  * @Author lw
  * @Date 2018-11-06 15:09:01

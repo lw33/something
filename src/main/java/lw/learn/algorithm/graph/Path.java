@@ -1,6 +1,9 @@
 package lw.learn.algorithm.graph;
 
-import lw.learn.ds.*;
+import lw.learn.ds.ArrayStack;
+import lw.learn.ds.DenseGraph;
+import lw.learn.ds.Graph;
+import lw.learn.ds.Stack;
 import lw.learn.utils.FileOperation;
 
 import java.util.ArrayList;

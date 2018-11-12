@@ -1,7 +1,6 @@
 package lw.learn.ds;
 
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * @Author lw

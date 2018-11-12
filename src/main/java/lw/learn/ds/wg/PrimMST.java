@@ -4,7 +4,10 @@ import lw.learn.ds.IndexHeap;
 import lw.learn.ds.Merger;
 import lw.learn.utils.FileOperation;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * @Author lw
@@ -71,12 +74,23 @@ public class PrimMST<T extends Comparable<T>> {
     }
 
     public static void main(String[] args) {
-        WeightGraph<Double> weightGraph = FileOperation.readWeightGrap(SparseGraph.class, false, "wg1.txt");
+        WeightGraph<Double> weightGraph = FileOperation.readWeightGrap(SparseGraph.class, false, "wg2.txt");
+        System.out.println(weightGraph.V());
+        long start = System.currentTimeMillis();
+        LazyPrimMST<Double> lazyPrimMST= new LazyPrimMST<>(weightGraph, (e1, e2) -> e1 + e2, (edg1, edg2) -> edg1.weight().equals(edg2.weight()) ? 0 : edg1.weight() > edg2.weight() ? 1 : -1, 0.0);
+        long end = System.currentTimeMillis();
+        System.out.println("LazyPrim Duration: " + (end - start));
+        System.out.println("=====================================");
+
+
+        System.out.println("LazyPrim MST: " + lazyPrimMST.mstWeight());
+        start = System.currentTimeMillis();
         PrimMST<Double> primeMST = new PrimMST<>(weightGraph, (d1, d2) -> -d1.compareTo(d2), (e1, e2) -> e1 + e2, 0.0);
-        for (Edge<Double> doubleEdge : primeMST.mst()) {
-            System.out.print(doubleEdge.v() + "--" + doubleEdge.w() + ": " + doubleEdge.weight());
-            System.out.println();
-        }
-        System.out.println(primeMST.mstWeight());
+        end = System.currentTimeMillis();
+        System.out.println("Prim Duration: " + (end - start));
+
+        System.out.println("Prim MST: " + primeMST.mstWeight());
+
+
     }
 }

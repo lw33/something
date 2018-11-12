@@ -1,8 +1,8 @@
 package lw.learn.utils;
 
+import com.sun.istack.internal.Nullable;
 import lw.learn.ds.Graph;
 import lw.learn.ds.wg.WeightGraph;
-import org.jetbrains.annotations.Nullable;
 import org.junit.Test;
 
 import java.io.BufferedInputStream;
@@ -127,7 +127,6 @@ public class FileOperation {
         }
     }
 
-    @Nullable
     private static Scanner getScanner(String filename) {
         if (filename == null) {
             System.out.println("filename is null or words is null");

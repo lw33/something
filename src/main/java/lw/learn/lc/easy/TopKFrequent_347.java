@@ -1,5 +1,5 @@
 package lw.learn.lc.easy;
-import org.jetbrains.annotations.NotNull;
+
 import org.junit.Test;
 
 import java.util.HashMap;
