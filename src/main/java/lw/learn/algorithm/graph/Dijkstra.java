@@ -3,7 +3,7 @@ package lw.learn.algorithm.graph;
 
 import lw.learn.ds.ArrayStack;
 import lw.learn.ds.IndexHeap;
-import lw.learn.ds.Merger;
+import lw.learn.utils.Merger;
 import lw.learn.ds.Stack;
 import lw.learn.ds.wg.Edge;
 import lw.learn.ds.wg.SparseGraph;

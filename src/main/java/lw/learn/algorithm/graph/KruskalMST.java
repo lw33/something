@@ -1,6 +1,6 @@
 package lw.learn.algorithm.graph;
 
-import lw.learn.ds.Merger;
+import lw.learn.utils.Merger;
 import lw.learn.ds.UnionFind;
 import lw.learn.ds.wg.Edge;
 import lw.learn.ds.wg.WeightGraph;

@@ -1,4 +1,4 @@
-package lw.learn.ds;
+package lw.learn.utils;
 
 /**
  * @Author lw
