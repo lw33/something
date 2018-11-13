@@ -1,5 +1,7 @@
 package lw.learn.lc.easy;
 
+import lw.learn.lc.ds.ListNode;
+
 /**
  * @Author lw
  * @Date 2018-10-01 14:41:17
@@ -12,14 +14,6 @@ package lw.learn.lc.easy;
  **/
 public class MergeTwoLists_21 {
 
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 
