@@ -21,7 +21,7 @@ public class Array<E> {
     // 增
     public void add(int index, E e) {
 
-        if(index < 0 || index > size)
+        if (index < 0 || index > size)
             throw new IllegalArgumentException("Get failed. Index is illegal.");
         ensureCapacity();
 
@@ -43,10 +43,11 @@ public class Array<E> {
     public void addFirst(E e) {
         add(0, e);
     }
+
     // 删
     public E remove(int index) {
 
-        if(index < 0 || index >= size)
+        if (index < 0 || index >= size)
             throw new IllegalArgumentException("Get failed. Index is illegal.");
 
         E del = data[index];
@@ -54,7 +55,8 @@ public class Array<E> {
             data[i] = data[i + 1];
         }
         size--;
-        if(size == data.length / 4 && data.length / 2 != 0)
+        //if (size == data.length / 4 && data.length / 2 != 0)
+        if (size == data.length / 4)
             resize(data.length / 2);
         return del;
     }
@@ -78,7 +80,7 @@ public class Array<E> {
     // 改
     public void set(int index, E e) {
 
-        if(index < 0 || index >= size)
+        if (index < 0 || index >= size)
             throw new IllegalArgumentException("Get failed. Index is illegal.");
         data[index] = e;
 
@@ -95,7 +97,7 @@ public class Array<E> {
     }
 
     public E get(int index) {
-        if(index < 0 || index >= size)
+        if (index < 0 || index >= size)
             throw new IllegalArgumentException("Get failed. Index is illegal.");
 
         return data[index];
@@ -129,11 +131,14 @@ public class Array<E> {
     }
 
     private void resize(int newCapacity) {
-        E[] e = (E[]) new Object[newCapacity];
-        for (int i = 0; i < size; i++) {
-            e[i] = data[i];
+        if (newCapacity > size) {
+
+            E[] e = (E[]) new Object[newCapacity];
+            for (int i = 0; i < size; i++) {
+                e[i] = data[i];
+            }
+            data = e;
         }
-        data = e;
     }
 
     public void swap(int i, int j) {

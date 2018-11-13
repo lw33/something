@@ -103,11 +103,12 @@ public class Dijkstra<T extends Comparable<T>> {
 
         Merger<Double> merger = (e1, e2) -> e1 + e2;
         Comparator<Double> comparator = (d1, d2) -> -d1.compareTo(d2);
-        Dijkstra<Double> dijkstra = new Dijkstra<>(weightGraph, comparator, merger, 0, 0.0);
+        Dijkstra<Double> dijkstra = new Dijkstra<>(weightGraph, comparator, merger, 1, 0.0);
         for (int i = 1; i < weightGraph.V(); i++) {
             System.out.println("Shortest Path to " + i );
             dijkstra.showPath(i);
             System.out.println("==========================================");
         }
+        System.out.println();
     }
 }
