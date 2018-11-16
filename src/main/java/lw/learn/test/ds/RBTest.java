@@ -51,7 +51,7 @@ public class RBTest {
         BSTSet<Integer> bstSet = new BSTSet<>();
         LinkedListSet<Integer> listSet = new LinkedListSet<>();
         int n = 9999;
-        TimeHelper<Set<Integer>, Integer> timeHelper = new TimeHelper();
+        TimeHelper timeHelper = new TimeHelper();
         System.out.println(timeHelper.duration(new Add(), rbSet, n));
         System.out.println(timeHelper.duration(new Add(), bstSet, n));
         System.out.println(timeHelper.duration(new Add(), listSet, n));
