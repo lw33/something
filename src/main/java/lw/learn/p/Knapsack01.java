@@ -9,7 +9,6 @@ import org.junit.Test;
 public class Knapsack01 {
 
     /**
-     *
      * @param w 物体的重量
      * @param v 物体的价值
      * @param c 背包的总容量
@@ -25,8 +24,8 @@ public class Knapsack01 {
         if (index >= w.length || c <= 0)
             return 0;
         int val = knapsack01I(w, v, index + 1, c);
-        for (int i = index; i < w.length; i++)
-            val = Math.max(val, (w[index] <= c ? v[index] + knapsack01I(w, v, index + 1, c - w[index]) : 0));
+        if (w[index] <= c)
+            val = Math.max(val, (v[index] + knapsack01I(w, v, index + 1, c - w[index])));
 
         return val;
     }
