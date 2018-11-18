@@ -55,9 +55,13 @@ public class CanPartition_416 {
         for (int i = 0; i <= capacity; i++)
             dp[i] = nums[0] == i;
 
-        for (int i = 1; i < nums.length; i++)
+        for (int i = 1; i < nums.length; i++) {
             for (int j = capacity; j >= nums[i]; j--)
                 dp[j] = dp[j] || dp[j - nums[i]];
+
+            if (dp[capacity])
+                return true;
+        }
 
 
         return dp[capacity];
