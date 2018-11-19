@@ -1,6 +1,6 @@
 package lw.learn.algorithm.sort.sort3;
 
-import lw.learn.algorithm.sort.SortUtil;
+import lw.learn.utils.SortUtil;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -23,13 +23,12 @@ public class Insertion {
         }
 
     }
+
     public static int[] sort(int[] arr) {
 
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = i + 1; j > 0 && arr[j] < arr[j - 1]; j--) {
+        for (int i = 1; i < arr.length; i++)
+            for (int j = i; j > 0 && arr[j - 1] > arr[j]; j--)
                 SortUtil.swap(arr, j, j - 1);
-            }
-        }
 
         return arr;
     }

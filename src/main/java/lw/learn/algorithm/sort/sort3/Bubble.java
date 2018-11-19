@@ -1,8 +1,9 @@
 package lw.learn.algorithm.sort.sort3;
 
 
-import lw.learn.algorithm.sort.SortUtil;
 import lw.learn.ds.Array;
+import lw.learn.utils.SortUtil;
+import lw.learn.utils.ArrayHelper;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -22,7 +23,7 @@ public class Bubble {
             for (int j = 0; j < arrLength; j++) {
                 arr[j] = new Random().nextInt(100);
             }
-            System.out.println(Arrays.toString(sort2(arr)) + " is order ? " + SortUtil.isOrder(arr));
+            System.out.println(Arrays.toString(sort3(arr)) + " is order ? " + SortUtil.isOrder(arr));
 
         }
 
@@ -76,11 +77,63 @@ public class Bubble {
 
         return arr;
     }
+
+    public static int[] sort3(int[] arr) {
+
+        int pos = 0;    // 记录上一次位置
+        int end = arr.length - 1;  // 比较结束位置
+        int start = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            boolean flag = true;
+
+            for (int j = start; j < end; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    SortUtil.swap(arr, j, j + 1);
+                    flag = false;
+                    pos = j;
+                }
+            }
+
+            if (flag)
+                return arr;
+
+            flag = true;
+            end = pos;
+
+            for (int j = end; j > 0; j--) {
+                if (arr[j] < arr[j - 1]) {
+                    SortUtil.swap(arr, j, j - 1);
+                    flag = false;
+                    start = j;
+                }
+            }
+
+            if (flag)
+                return arr;
+        }
+
+        return arr;
+    }
+
+
     @Test
     public void test() {
-        int[] arr = {1, 2, 3, 2, 5, 8,7};
-        System.out.println(Arrays.toString(this.sort1(arr)));
-        System.out.println(Arrays.toString(this.sort2(arr)));
+        int count = 1000;
+        int value = 100;
+        int size = 20;
+        for (int i = 0; i < count; i++) {
+            int[] arr = ArrayHelper.genRandomArray(size, value);
+            int[] arr1 = ArrayHelper.copyArray(arr);
+            int[] arr2 = ArrayHelper.copyArray(arr);
+            sort3(arr1);
+            sort1(arr2);
+            if (!ArrayHelper.isEquals(arr1, arr2)) {
+                System.out.println("wrong!!!");
+                return;
+            }
+        }
+        System.out.println("done... good job...");
     }
 
 }

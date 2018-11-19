@@ -1,6 +1,6 @@
 package lw.learn.algorithm.sort.sort1;
 
-import lw.learn.algorithm.sort.SortUtil;
+import lw.learn.utils.SortUtil;
 
 import java.util.Arrays;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package lw.learn.algorithm.sort;
+package lw.learn.utils;
 
 /**
  * @Author lw

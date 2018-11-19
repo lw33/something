@@ -1,6 +1,6 @@
 package lw.learn.ds;
 
-import lw.learn.algorithm.sort.SortUtil;
+import lw.learn.utils.SortUtil;
 
 import java.util.Comparator;
 

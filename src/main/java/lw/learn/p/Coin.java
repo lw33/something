@@ -1,6 +1,6 @@
 package lw.learn.p;
 
-import lw.learn.algorithm.sort.SortUtil;
+import lw.learn.utils.SortUtil;
 import org.junit.Test;
 
 /**
