@@ -20,6 +20,6 @@ public class Fibonacci {
 
     @Test
     public void test() {
-        System.out.println(fib1(40));
+        System.out.println(fib1(2));
     }
 }
