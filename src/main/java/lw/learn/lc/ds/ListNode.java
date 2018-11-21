@@ -34,7 +34,21 @@ public class ListNode {
         }
         return root;
     }
-
+    public static ListNode[] buildListArr(int[] arr) {
+        if (arr == null || arr.length == 0)
+            return null;
+        ListNode[] res = new ListNode[arr.length];
+        ListNode root;
+        root = new ListNode(arr[0]);
+        ListNode cur = root;
+        res[0] = cur;
+        for (int i = 1; i < arr.length; i++) {
+            cur.next = new ListNode(arr[i]);
+            cur = cur.next;
+            res[i] = cur;
+        }
+        return res;
+    }
     public static void printList(ListNode root) {
         while (root != null) {
             System.out.print(root.val + " ");
