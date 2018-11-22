@@ -1,6 +1,7 @@
 package lw.learn.lc.medium;
 
 import lw.learn.lc.ds.TreeNode;
+import sun.reflect.generics.tree.Tree;
 
 import java.util.Stack;
 
@@ -30,5 +31,19 @@ public class IsValidBST_98 {
             }
         }
         return true;
+    }
+
+    double last = -Double.MAX_VALUE;
+    public boolean isValidbst(TreeNode root) {
+            if (root == null) {
+                return true;
+            }
+            if (isValidBST(root.left)) {
+                if (last < root.val) {
+                    last = root.val;
+                    return isValidBST(root.right);
+                }
+            }
+            return false;
     }
 }
