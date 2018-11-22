@@ -1,6 +1,7 @@
 package lw.learn.lc.hard;
 
 import lw.learn.lc.ds.TreeNode;
+import sun.reflect.generics.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,31 @@ public class PostorderTraversal_145 {
         return res;
     }
 
-    public void inOrder(TreeNode node, List<Integer> res) {
+    public List<Integer> postorderTraversal1(TreeNode root) {
+
+        List<Integer> res = new ArrayList<>();
+        if (root != null) {
+            Stack<TreeNode> stack = new Stack<>();
+            stack.push(root);
+            TreeNode stackTop;
+            TreeNode lastOut = root;
+            while (!stack.isEmpty()) {
+                stackTop = stack.peek();
+                if (stackTop.left != null && stackTop.left != lastOut && stackTop.right != lastOut) {
+                    stack.push(stackTop.left);
+                } else if (stackTop.right != null && stackTop.right != lastOut) {
+                    stack.push(stackTop.right);
+                } else {
+                    lastOut = stack.pop();
+                    res.add(lastOut.val);
+                }
+            }
+        }
+        return res;
+    }
+
+
+        public void inOrder(TreeNode node, List<Integer> res) {
         if(node == null)
             return;
         inOrder(node.left, res);
