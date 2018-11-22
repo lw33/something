@@ -1,6 +1,7 @@
 package lw.learn.lc.medium;
 
 import lw.learn.lc.ds.TreeNode;
+import org.junit.Test;
 
 /**
  * @Author lw
@@ -17,21 +18,24 @@ public class DeleteNode_450 {
         } else if (key < root.val) {
             root.left = deleteNode(root.left, key);
         } else {
-            TreeNode min = null;
-            if (root.left != null) {
-                min = min(root.left);
-                root.left = removeMin(root.left);
-            } else if (root.right != null) {
-                min = min(root.right);
-                root.right = removeMin(root.right);
+
+            if (root.left == null) {
+                TreeNode rightNode = root.right;
+                root.right = null;
+                root = rightNode;
+            } else if (root.right == null) {
+                TreeNode leftNode = root.left;
+                root.left = null;
+                root = leftNode;
             } else {
-                return null;
+                TreeNode min = min(root.right);
+                root.right = removeMin(root.right);
+                min.left = root.left;
+                min.right = root.right;
+                root.left = null;
+                root.right = null;
+                root = min;
             }
-            min.left = root.left;
-            min.right = root.right;
-            root.left = null;
-            root.right = null;
-            root = min;
         }
         return root;
     }
@@ -53,6 +57,16 @@ public class DeleteNode_450 {
         }
         node.left = removeMin(node.left);
         return node;
+    }
+
+    @Test
+    public void test() {
+        TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(1);
+        root.right = new TreeNode(4);
+        root.left.right = new TreeNode(2);
+        this.deleteNode(root, 3);
+        System.out.println();
     }
 
     public TreeNode getLeft(TreeNode node) {
