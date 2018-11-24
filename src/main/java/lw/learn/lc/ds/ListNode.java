@@ -54,5 +54,19 @@ public class ListNode {
             System.out.print(root.val + " ");
             root = root.next;
         }
+        System.out.println();
     }
+
+    public static ListNode reverse(ListNode head) {
+        ListNode newHead = null;
+        while (head != null) {
+            ListNode tmp = head;
+            head = head.next;
+            tmp.next = newHead;
+            newHead = tmp;
+        }
+        return newHead;
+    }
+
+
 }

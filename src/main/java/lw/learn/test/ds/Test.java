@@ -2,6 +2,7 @@ package lw.learn.test.ds;
 
 import lw.learn.ds.DenseGraph;
 import lw.learn.ds.SparseGraph;
+import lw.learn.lc.ds.ListNode;
 
 import java.util.Random;
 
@@ -49,5 +50,14 @@ public class Test {
 
 
     }
-
+    @org.junit.Test
+    public void test2() {
+        int[] arr = {1, 2, 3, 4, 5};
+        ListNode listNode = ListNode.buildList(arr);
+        ListNode.printList(listNode);
+        ListNode reverse = ListNode.reverse(listNode);
+        ListNode.printList(reverse);
+        ListNode reverse1 = ListNode.reverse(reverse);
+        ListNode.printList(reverse1);
+    }
 }
