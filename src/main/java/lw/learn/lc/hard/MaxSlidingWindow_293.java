@@ -1,9 +1,7 @@
 package lw.learn.lc.hard;
 
-
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -34,6 +32,7 @@ public class MaxSlidingWindow_293 {
         }
         return res;
     }
+
     @Test
     public void test() {
         int[] arr = {1, 3, -1, -3, 5, 3, 6, 7};
