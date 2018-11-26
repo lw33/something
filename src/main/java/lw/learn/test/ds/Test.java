@@ -4,6 +4,8 @@ import lw.learn.ds.DenseGraph;
 import lw.learn.ds.SparseGraph;
 import lw.learn.lc.ds.ListNode;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -59,5 +61,36 @@ public class Test {
         ListNode.printList(reverse);
         ListNode reverse1 = ListNode.reverse(reverse);
         ListNode.printList(reverse1);
+    }
+
+    @org.junit.Test
+    public void test3() {
+        Integer i = new Integer(2);
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(i, 1);
+        for (Integer integer : map.keySet()) {
+            System.out.println(integer.equals(i));
+            System.out.println(integer == i);
+        }
+        String str = new String("java");
+        Map<String, Integer> stringIntegerMap = new HashMap<>();
+        stringIntegerMap.put(str, 1);
+        for (String s : stringIntegerMap.keySet()) {
+            System.out.println(s == str);
+            System.out.println(s.equals(str));
+        }
+    }
+
+    @org.junit.Test
+    public void test4() {
+        Integer i = 1;
+        Integer j = 1;
+        Integer i1 = 127;
+        Integer j1 = 127;
+        Integer i2 = 128;
+        Integer j2 = 128;
+        System.out.println(i == j);
+        System.out.println(i1 == j1);
+        System.out.println(i2 == j2);
     }
 }
