@@ -11,8 +11,8 @@ public class FindPoisonedDuration_495 {
             return 0;
         int sum = duration;
         for (int i = 1; i < timeSeries.length; i++) {
-            int inteval = timeSeries[i] - timeSeries[i - 1];
-            sum += Math.min(inteval, duration);
+            int interval = timeSeries[i] - timeSeries[i - 1];
+            sum += Math.min(interval, duration);
         }
         return sum;
     }
