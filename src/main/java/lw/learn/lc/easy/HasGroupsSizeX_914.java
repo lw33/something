@@ -9,7 +9,7 @@ import java.util.Map;
  * @Author lw
  * @Date 2018-11-27 23:15:59
  **/
-// TODO: 2018/11/28 待优化 
+// TODO: 2018/11/28 待优化
 public class HasGroupsSizeX_914 {
 
     public boolean hasGroupsSizeX(int[] deck) {
@@ -37,14 +37,14 @@ public class HasGroupsSizeX_914 {
     }
 
     int gcd(int a, int b) {
-        int min;
-        min = a > b ? b : a;
-        while (min != 0) {
-            if (a % min == 0 && b % min == 0) break;
-            min--;
+
+        while (b != 0) {
+            int r = a % b;
+            a = b;
+            b = r;
         }
 
-        return min;
+        return a;
     }
 
     @Test

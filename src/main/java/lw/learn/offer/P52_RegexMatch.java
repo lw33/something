@@ -91,7 +91,7 @@ public class P52_RegexMatch {
     @Test
     public void test() {
         String a = "a";
-        String b = ".*";
+        String b = ".**";
         System.out.println(this.match(a.toCharArray(), b.toCharArray()));
     }
 

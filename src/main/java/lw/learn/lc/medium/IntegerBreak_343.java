@@ -26,7 +26,7 @@ public class IntegerBreak_343 {
 
         int res = -1;
 
-        for (int i = 1; i < n/2 + 1; i++)
+        for (int i = 1; i <= n - 1; i++)
             res = Math.max(Math.max(res, i * (n - i)), i * breakInteger(n - i));
 
         memo[n] = res;
@@ -38,10 +38,10 @@ public class IntegerBreak_343 {
 
         memo = new int[n + 1];
         memo[1] = 1;
-        for (int i = 2; i < n; i++)
+        for (int i = 2; i <= n; i++)
             for (int j = 1; j <= i - 1; j++)
                 // j + i - j
-                memo[i] = Math.max(j * (i - j), memo[i - j]);
+                memo[i] = Math.max(Math.max(memo[i], j * (i - j)), j * memo[i - j]);
         return memo[n];
     }
 
