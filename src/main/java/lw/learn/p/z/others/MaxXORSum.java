@@ -44,6 +44,7 @@ public class MaxXORSum {
         Node[] nexts = new Node[2];
     }
 
+    // TODO: 2018/11/29 Trie
     class NumTrie {
 
         Node head = new Node();
