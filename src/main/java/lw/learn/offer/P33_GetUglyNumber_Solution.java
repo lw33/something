@@ -1,5 +1,7 @@
 package lw.learn.offer;
 
+import org.junit.Test;
+
 /**
  * @Author lw
  * @Date 2018-10-02 20:15:05
@@ -22,7 +24,7 @@ public class P33_GetUglyNumber_Solution {
         int cur = 1;
         int[] uglys = new int[index];
         uglys[0] = 1;
-        for (int i = 1; i < index + 1; i++) {
+        for (int i = 1; i < index ; i++) {
 
             uglys[i] = Math.min(Math.min(uglys[cur2] * 2, uglys[cur3] * 3), uglys[cur5] * 5);
 
@@ -40,5 +42,12 @@ public class P33_GetUglyNumber_Solution {
             cur = uglys[i];
         }
         return cur;
+    }
+
+    @Test
+    public void test() {
+        for (int i = 1; i < 1695; i++) {
+            System.out.print(this.GetUglyNumber_Solution(i) + ", ");
+        }
     }
 }
