@@ -17,7 +17,8 @@ public class NthUglyNumber_264 {
         uglyNumbers[1] = 1;
         uglyNumbers[2] = 2;
         for (int i = 0; i <= n; i++) {
-            uglyNumbers[i]
+            //uglyNumbers[i]
         }
+        return 0;
     }
 }
