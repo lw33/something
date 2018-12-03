@@ -1,7 +1,11 @@
 package lw.learn.lc.medium;
 
+import org.junit.Test;
+
 import javax.security.auth.callback.CallbackHandler;
+import java.nio.charset.Charset;
 import java.util.stream.IntStream;
+import java.util.zip.GZIPOutputStream;
 
 /**
  * @Author lw
@@ -12,33 +16,41 @@ public class ReverseWords_151 {
     public String reverseWords(String s) {
 
         int start = 0;
-
-        for (; start < s.length() - 1; start++) {
-            if (s.charAt(start) != ' ') {
+        for (; start < s.length() - 1; start++)
+            if (s.charAt(start) != ' ')
                 break;
-            }
-        }
-
         int end = s.length() - 1;
         for (; end >= 0; end--)
             if (s.charAt(end) != ' ')
                 break;
 
-
         StringBuilder sb = new StringBuilder();
 
-        while (end > start) {
+        while (end >= 0) {
 
+            int wStart = end;
+            while (wStart >= 0 && s.charAt(wStart) != ' ')
+                wStart--;
+
+            if (wStart != end) {
+                for (int i = wStart + 1; i <= end; i++) {
+                    sb.append(s.charAt(i));
+                }
+                if (wStart > start) {
+                    sb.append(' ');
+                }
+            }
+            end = wStart - 1;
         }
+
+
+        return sb.toString();
     }
 
-    public void reverse(char[] chars, int start, int end) {
-        while (end > start) {
-            char tmp = chars[start];
-            chars[start] = chars[end];
-            chars[end] = tmp;
-            end--;
-            start++;
-        }
+    @Test
+    public void test() {
+        String str = "  a  ";
+        System.out.println(this.reverseWords(str));
     }
+
 }
