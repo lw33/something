@@ -5,7 +5,6 @@ import lw.learn.lc.ds.TreeNode;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 /**
  * @Author lw
@@ -14,29 +13,35 @@ import java.util.Queue;
 public class AverageOfLevels_637 {
 
     public List<Double> averageOfLevels(TreeNode root) {
-        List<Double> res = new ArrayList<>();
-        if(root == null) {
-            return res;
-        }
-        Queue<TreeNode> queue = new LinkedList<>();
+
+        List<Double> avgs = new ArrayList<>();
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        TreeNode endOfLevel = root;
+        TreeNode nextLevelNode = null;
         queue.add(root);
-        while(!queue.isEmpty()){
-            int size = queue.size();
-            int count = size;
-            double sum = 0.0;
-            while(size > 0){
-                TreeNode node = queue.poll();
-                sum += node.val;
-                if(node.left != null) {
-                    queue.add(node.left);
-                }
-                if(node.right != null) {
-                    queue.add(node.right);
-                }
-                size--;
+        double sum = 0.0;
+        int size = 0;
+        while (!queue.isEmpty()) {
+            TreeNode cur = queue.poll();
+            sum += cur.val;
+            size++;
+            if (cur.left != null) {
+                queue.add(cur.left);
+                nextLevelNode = cur.left;
             }
-            res.add(sum/count);
+            if (cur.right != null) {
+                queue.add(cur.right);
+                nextLevelNode = cur.right;
+            }
+            if (endOfLevel == cur) {
+                endOfLevel = nextLevelNode;
+                avgs.add(sum / size);
+                sum = 0.0;
+                size = 0;
+            }
         }
-        return res;
+        return avgs;
     }
+
+
 }
