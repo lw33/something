@@ -7,7 +7,21 @@ package lw.learn.lc.easy;
 public class SortArrayByParity_905 {
 
     public int[] sortArrayByParity(int[] A) {
-
+        if(A == null || A.length == 0) {
+            return A;
+        }
+        int odd = A.length - 1;
+        int cur = 0;
+        while (cur < odd) {
+            if (A[cur] % 2 == 0) {
+                cur++;
+            } else {
+                int tmp = A[cur];
+                A[cur] = A[odd];
+                A[odd] = A[cur];
+                odd--;
+            }
+        }
         return A;
     }
 }
