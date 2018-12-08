@@ -1,5 +1,7 @@
 package lw.learn.lc.medium;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +14,25 @@ import java.util.List;
  **/
 public class Subsets_78 {
     public List<List<Integer>> subsets(int[] nums) {
-
         List<List<Integer>> res = new ArrayList<>();
-
+        List<Integer> numList = new ArrayList<>();
+        subsets(nums, 0, numList, res);
         return res;
+    }
+
+    private void subsets(int[] nums, int index, List<Integer> numList, List<List<Integer>> res) {
+        if (index == nums.length) {
+            res.add(new ArrayList<>(numList));
+            return;
+        }
+        numList.add(nums[index]);
+        subsets(nums, index + 1, numList, res);
+        numList.remove(numList.size() - 1);
+        subsets(nums, index + 1, numList, res);
+    }
+    @Test
+    public void test() {
+        int[] arr = {1, 2, 3};
+        System.out.println(this.subsets(arr));
     }
 }
