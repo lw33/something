@@ -1,10 +1,5 @@
 package lw.learn.lc.fastest.easy;
 
-import org.junit.Test;
-
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @Author lw
  * @Date 2018-11-27 23:15:59

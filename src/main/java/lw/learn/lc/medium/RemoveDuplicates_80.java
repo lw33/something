@@ -2,7 +2,7 @@ package lw.learn.lc.medium;
 
 import org.junit.Test;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @Author lw

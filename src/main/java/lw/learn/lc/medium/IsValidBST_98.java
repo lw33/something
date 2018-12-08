@@ -1,7 +1,6 @@
 package lw.learn.lc.medium;
 
 import lw.learn.lc.ds.TreeNode;
-import sun.reflect.generics.tree.Tree;
 
 import java.util.Stack;
 

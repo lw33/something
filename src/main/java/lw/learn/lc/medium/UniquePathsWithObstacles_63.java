@@ -2,8 +2,6 @@ package lw.learn.lc.medium;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-
 /**
  * @Author lw
  * @Date 2018-11-29 00:57:18

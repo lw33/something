@@ -1,9 +1,8 @@
 package lw.learn.algorithm.sort.sort3;
 
 
-import lw.learn.ds.Array;
-import lw.learn.utils.SortUtil;
 import lw.learn.utils.ArrayHelper;
+import lw.learn.utils.SortUtil;
 import org.junit.Test;
 
 import java.util.Arrays;

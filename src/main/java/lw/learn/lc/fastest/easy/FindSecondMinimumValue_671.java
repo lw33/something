@@ -1,7 +1,6 @@
 package lw.learn.lc.fastest.easy;
 
 import lw.learn.lc.ds.TreeNode;
-import org.junit.Test;
 
 /**
  * @Author lw

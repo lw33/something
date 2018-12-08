@@ -1,6 +1,5 @@
 package lw.learn.lc.medium;
 
-import lw.learn.ds.Array;
 import org.junit.Test;
 
 import java.util.Arrays;

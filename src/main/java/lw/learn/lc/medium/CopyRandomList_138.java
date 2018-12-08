@@ -1,6 +1,5 @@
 package lw.learn.lc.medium;
 
-import lw.learn.offer.util.ListNode;
 import lw.learn.offer.util.RandomListNode;
 import org.junit.Test;
 

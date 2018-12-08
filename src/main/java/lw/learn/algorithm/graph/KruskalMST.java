@@ -1,9 +1,9 @@
 package lw.learn.algorithm.graph;
 
-import lw.learn.utils.Merger;
 import lw.learn.ds.UnionFind;
 import lw.learn.ds.wg.Edge;
 import lw.learn.ds.wg.WeightGraph;
+import lw.learn.utils.Merger;
 
 import java.util.ArrayList;
 import java.util.Comparator;

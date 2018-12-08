@@ -1,6 +1,5 @@
 package lw.learn.lc.easy;
 
-import lw.learn.algorithm.search.KMP;
 import org.junit.Test;
 
 /**

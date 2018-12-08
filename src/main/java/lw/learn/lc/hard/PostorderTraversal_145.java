@@ -1,7 +1,6 @@
 package lw.learn.lc.hard;
 
 import lw.learn.lc.ds.TreeNode;
-import sun.reflect.generics.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.List;

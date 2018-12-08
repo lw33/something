@@ -3,12 +3,12 @@ package lw.learn.algorithm.graph;
 
 import lw.learn.ds.ArrayStack;
 import lw.learn.ds.IndexHeap;
-import lw.learn.utils.Merger;
 import lw.learn.ds.Stack;
 import lw.learn.ds.wg.Edge;
 import lw.learn.ds.wg.SparseGraph;
 import lw.learn.ds.wg.WeightGraph;
 import lw.learn.utils.FileOperation;
+import lw.learn.utils.Merger;
 
 import java.util.ArrayList;
 import java.util.Comparator;

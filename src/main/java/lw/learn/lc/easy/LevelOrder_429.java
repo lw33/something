@@ -3,7 +3,6 @@ package lw.learn.lc.easy;
 import lw.learn.lc.ds.Node;
 import org.junit.Test;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;

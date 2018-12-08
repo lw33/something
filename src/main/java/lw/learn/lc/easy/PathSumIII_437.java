@@ -1,7 +1,8 @@
 package lw.learn.lc.easy;
 
-import java.util.HashMap;
 import lw.learn.lc.ds.TreeNode;
+
+import java.util.HashMap;
 
 /**
  * @Author lw
