@@ -1,5 +1,7 @@
 package lw.learn.lc.easy;
 
+import lw.learn.utils.StringHelper;
+
 /**
  * @Author lw
  * @Date 2018-11-20 16:50:43
@@ -11,15 +13,7 @@ public class IsPalindrome_9 {
         if (x < 0)
             return false;
         String s = String.valueOf(x);
-        int start = 0;
-        int end = s.length() - 1;
-        while (end > start) {
-            if (s.charAt(start) != s.charAt(end))
-                return false;
-            start++;
-            end--;
-        }
-        return true;
+        return StringHelper.isPalindrome(s);
     }
 
     public boolean isPalindromeFastest(int x) {
