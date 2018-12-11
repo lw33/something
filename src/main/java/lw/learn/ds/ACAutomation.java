@@ -16,7 +16,7 @@ public class ACAutomation {
 
     }
 
+    public static void main(String[] args) {
 
-
-
+    }
 }
