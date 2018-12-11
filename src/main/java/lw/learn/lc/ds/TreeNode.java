@@ -24,4 +24,16 @@ public class TreeNode {
         this.right = right;
         this.parent = parent;
     }
+
+    public static TreeNode aTree() {
+        TreeNode root = new TreeNode(10);
+        root.right = new TreeNode(19);
+        root.right.right = new TreeNode(25);
+        root.right.left = new TreeNode(15);
+        root.left = new TreeNode(6);
+        root.left.left = new TreeNode(5);
+        root.left.right = new TreeNode(7);
+        root.left.right.right = new TreeNode(8);
+        return root;
+    }
 }
