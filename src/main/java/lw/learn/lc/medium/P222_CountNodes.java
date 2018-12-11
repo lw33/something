@@ -1,0 +1,19 @@
+package lw.learn.lc.medium;
+
+import lw.learn.lc.ds.TreeNode;
+
+/**
+ * @Author lw
+ * @Date 2018-11-21 16:14:17
+ * @tag medium
+ **/
+// TODO: 2018/11/25  CountNodes
+public class P222_CountNodes {
+
+    // 2^n - 1
+    public int countNodes(TreeNode root) {
+        if (root == null)
+            return 0;
+        return 0;
+    }
+}
