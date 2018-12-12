@@ -1,6 +1,8 @@
 package lw.learn.lc.easy;
 
 
+import org.junit.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,5 +26,10 @@ public class P1_TwoSum {
 
         }
         return null;
+    }
+
+    @Test
+    public void test() {
+        System.out.println("P1_TwoSum.test");
     }
 }

@@ -22,18 +22,11 @@ package lw.learn.lc.hard;
  *
  *
  *
- *     #### Solution
- *
- *     Language: **Java**
- *
- *     ```java
- *     class Solution {
- *         public int longestConsecutive(int[] nums) {
- *
- *         }
- *     }
  **/
 // TODO: 2018/11/25  P128_LongestConsecutive
 public class P128_LongestConsecutive {
 
+    public int longestConsecutive(int[] nums) {
+        return 0;
+    }
 }

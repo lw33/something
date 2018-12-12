@@ -6,7 +6,7 @@ import org.junit.Test;
  * @Author lw
  * @Date 2018-11-23 23:07:21
  **/
-public class IndexOfStr {
+public class P28_IndexOfStr {
     
     public int strStr(String haystack, String needle) {
 
