@@ -16,6 +16,7 @@ public class P130_Solve {
         int m = board.length;
         int n = board[0].length;
         boolean[][] visited = new boolean[m][n];
+        // 只要最外层有零 则那片区域就不能修改
         for (int i = 0; i < n; i++) {
             if (board[0][i] == 'O' && !visited[0][i]) {
                 visited(board, 0, i, visited);
