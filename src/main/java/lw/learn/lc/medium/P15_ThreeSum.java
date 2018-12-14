@@ -1,5 +1,7 @@
 package lw.learn.lc.medium;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -23,25 +25,18 @@ import java.util.List;
  *       [-1, 0, 1],
  *       [-1, -1, 2]
  *     ]
- *
- *
- *
- * Solution
- *
- * Language: Java
- *
- *     class Solution {
- *         public List<List<Integer>> threeSum(int[] nums) {
- *
- *         }
- *     }
- *
  **/
 public class P15_ThreeSum {
     public List<List<Integer>> threeSum(int[] nums) {
-
-
-        //return true;
+        List<List<Integer>> res = new ArrayList<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            if (map.containsKey(num)) {
+                map.put(num, map.get(num) + 1);
+            } else {
+                map.put(num, 1);
+            }
+        }
 
         return null;
     }
