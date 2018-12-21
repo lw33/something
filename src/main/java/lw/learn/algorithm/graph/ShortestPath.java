@@ -1,14 +1,13 @@
 package lw.learn.algorithm.graph;
 
-import lw.learn.ds.ArrayStack;
-import lw.learn.ds.DenseGraph;
 import lw.learn.ds.Graph;
-import lw.learn.ds.Stack;
+import lw.learn.ds.SparseGraph;
 import lw.learn.utils.FileOperation;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @Author lw
@@ -43,6 +42,7 @@ public class ShortestPath {
                 if (!visited[v]) {
                     from[v] = poll;
                     ord[v] = ord[poll] + 1;
+                    visited[v] = true;
                     queue.offer(v);
                 }
             });
@@ -54,7 +54,7 @@ public class ShortestPath {
     }
 
     public void path(int w, List<Integer> paths) {
-        Stack<Integer> stack = new ArrayStack<>();
+        Stack<Integer> stack = new Stack<>();
         int p = w;
         while (p != -1) {
             stack.push(p);
@@ -78,7 +78,7 @@ public class ShortestPath {
         return ord[w];
     }
     public static void main(String[] args) {
-        Graph denseGraph = FileOperation.readGrap(DenseGraph.class, false, "g2.txt");
+        Graph denseGraph = FileOperation.readGrap(SparseGraph.class, false, "g2.txt");
         ShortestPath path = new ShortestPath(denseGraph, 0);
         path.showPath(6);
         System.out.println(path.length(6));
