@@ -6,7 +6,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -15,16 +14,26 @@ import java.util.stream.Collectors;
  **/
 public class P442_FindAllDuplicatesInAnArray {
 
-    public List<Integer> findDuplicates(int[] nums) {
-        Map<Integer, List<Integer>> collect = Arrays.stream(nums).boxed().collect(Collectors.groupingBy(Integer::new));
+
+    public List<Integer> findDuplicates666(int[] nums) {
         List<Integer> res = new ArrayList<>();
-        collect.forEach((k, v) -> {
-            if (v.size() == 2) {
-                res.add(k);
-            }
-        });
         return res;
     }
+
+    public List<Integer> findDuplicates(int[] nums) {
+
+        List<Integer> res = new ArrayList<>();
+        Arrays.stream(nums).
+                boxed().
+                collect(Collectors.groupingBy(Integer::new))
+                .forEach((k, v) -> {
+                    if (v.size() == 2) {
+                        res.add(k);
+                    }
+                });
+        return res;
+    }
+
     @Test
     public void test() {
         int[] ints = JSON2Java.json2intArray("[4,3,2,7,8,2,3,1]");
