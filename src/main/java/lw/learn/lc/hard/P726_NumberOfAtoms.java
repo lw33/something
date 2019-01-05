@@ -40,7 +40,8 @@ public class P726_NumberOfAtoms {
                     continue;
                 }
                 pre = 0;
-                map.put(String.valueOf(formula[index - 1]), map.getOrDefault(String.valueOf(formula[index - 1]), 0) + 1);
+                map.put(String.valueOf(formula[index - 1]),
+                        map.getOrDefault(String.valueOf(formula[index - 1]), 0) + 1);
             } else if (isNum(formula[index])) {
                 pre = pre * 10 + formula[index++] - '0';
                 if (index < formula.length && isNum(formula[index])) {
@@ -55,7 +56,8 @@ public class P726_NumberOfAtoms {
                 if (index < formula.length && isLowerLetter(formula[index])) {
                     continue;
                 }
-                if (index < formula.length && (isUpperLetter(formula[index]) || formula[index] == '(' || formula[index] == ')')) {
+                if (index < formula.length && (isUpperLetter(formula[index]) ||
+                        formula[index] == '(' || formula[index] == ')')) {
                     map.put(sb.toString(), map.getOrDefault(sb.toString(), 0) + 1);
                     sb.delete(0, sb.length());
                 }
