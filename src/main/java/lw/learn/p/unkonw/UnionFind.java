@@ -8,7 +8,6 @@ import java.util.List;
  * @Author lw
  * @Date 2018-11-22 10:16:46
  **/
-// TODO: 2018/11/26 UnionFind 待实现 
 public class UnionFind {
 
     public static class Node {
@@ -17,7 +16,7 @@ public class UnionFind {
 
     public static class UnionFindSet {
         HashMap<Node, Node> fatherMap;
-        HashMap<Node, Integer> sizeMap;
+        HashMap<Node, Integer> rankMap;
 
         public UnionFindSet(List<Node> nodes) {
             makeSets(nodes);
@@ -25,25 +24,47 @@ public class UnionFind {
 
         private void makeSets(List<Node> nodes) {
             fatherMap = new HashMap<>();
-            sizeMap = new HashMap<>();
+            rankMap = new HashMap<>();
             for (Node node : nodes) {
                 fatherMap.put(node, node);
-                sizeMap.put(node, 1);
+                rankMap.put(node, 1);
             }
         }
 
         private Node findHead(Node node) {
 
-            return null;
+            Node father = fatherMap.get(node);
+            if (father != node) {
+                father = findHead(father);
+            }
+            fatherMap.put(node, father);
+            return father;
         }
 
         public boolean isSameSet(Node a, Node b) {
 
-            return false;
+            return a== b || findHead(a) == findHead(b);
         }
 
         public void union(Node a, Node b) {
-
+            if (a == b) {
+                return;
+            }
+            Node aHead = findHead(a);
+            Node bHead = findHead(b);
+            if (aHead == bHead) {
+                return;
+            }
+            Integer arank = rankMap.get(aHead);
+            Integer brank = rankMap.get(b);
+            if (arank > brank) {
+                fatherMap.put(bHead, aHead);
+            } else if (arank < brank) {
+                fatherMap.put(aHead, bHead);
+            } else {
+                fatherMap.put(bHead, aHead);
+                rankMap.put(aHead, arank + 1);
+            }
         }
     }
 }
