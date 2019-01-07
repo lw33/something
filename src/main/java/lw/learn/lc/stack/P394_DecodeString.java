@@ -1,4 +1,4 @@
-package lw.learn.lc.stack.medium;
+package lw.learn.lc.stack;
 
 /**
  * @Author lw

@@ -1,4 +1,4 @@
-package lw.learn.lc.stack.hard;
+package lw.learn.lc.stack;
 
 import org.junit.Test;
 

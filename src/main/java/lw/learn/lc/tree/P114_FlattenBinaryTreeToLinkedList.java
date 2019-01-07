@@ -1,4 +1,4 @@
-package lw.learn.lc.tree.medium;
+package lw.learn.lc.tree;
 
 import lw.learn.lc.ds.TreeNode;
 
