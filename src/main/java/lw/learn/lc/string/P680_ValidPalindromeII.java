@@ -6,7 +6,6 @@ import org.junit.Test;
  * @Author lw
  * @Date 2019-01-08 23:46:28
  **/
-// FIXME 2019/1/9  优化
 public class P680_ValidPalindromeII {
 
     public boolean validPalindrome(String s) {
