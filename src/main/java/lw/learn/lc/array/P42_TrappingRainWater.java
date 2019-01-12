@@ -18,13 +18,25 @@ public class P42_TrappingRainWater {
 
         int res = 0;
 
-        int l = 0;
-        int r = height.length - 1;
-
-        for (int i = 1; i < height.length - 1; i++) {
-
+        int lMax = height[0];
+        int rMax = height[height.length - 1];
+        int start = 1;
+        int end = height.length - 2;
+        while (end >= start) {
+            if (height[start] >= lMax) {
+                lMax = height[start++];
+            }
+            if (height[end] >= rMax) {
+                rMax = height[end--];
+            } else if (height[start] < lMax && height[end] < rMax) {
+                if (lMax < rMax) {
+                    res += lMax - height[start++];
+                } else {
+                    res += rMax - height[end--];
+                }
+            }
         }
-        return 0;
+        return res;
     }
 
 
@@ -67,6 +79,8 @@ public class P42_TrappingRainWater {
     @Test
     public void test() {
         int[] arr = JSON2Java.json2intArray("[0,1,0,2,1,0,1,3,2,1,2,1]");
+        int[] arr1 = JSON2Java.json2intArray("[0,2,0]");
         System.out.println(this.trap(arr));
+        System.out.println(this.trap666(arr1));
     }
 }
