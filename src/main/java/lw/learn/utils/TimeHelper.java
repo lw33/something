@@ -15,7 +15,4 @@ public class TimeHelper {
         long end = System.currentTimeMillis();
         return end - start;
     }
-
-
-
 }
