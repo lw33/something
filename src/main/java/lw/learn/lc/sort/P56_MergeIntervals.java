@@ -13,6 +13,7 @@ import java.util.List;
  **/
 public class P56_MergeIntervals {
     public List<Interval> merge(List<Interval> intervals) {
+
         List<Interval> res = new ArrayList<>();
 
         if (intervals.size() == 0) {
@@ -21,12 +22,21 @@ public class P56_MergeIntervals {
         Collections.sort(intervals, Comparator.comparingInt(i -> i.start));
 
         Interval interval = new Interval();
-        for (int i = 0; i < intervals.size(); i++) {
-            if (intervals.get(i).end >= intervals.get(i + 1).start) {
-
+        interval.start = intervals.get(0).start;
+        interval.end = intervals.get(0).end;
+        for (int i = 1; i < intervals.size(); i++) {
+            if (intervals.get(i).start <= interval.end) {
+                interval.end = intervals.get(i).end > interval.end ? intervals.get(i).end : interval.end;
             } else {
+                res.add(interval);
+                interval = new Interval();
+                interval.start = intervals.get(i).start;
+                interval.end = intervals.get(i).end;
             }
         }
+        res.add(interval);
         return res;
     }
+
+
 }

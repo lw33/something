@@ -17,4 +17,12 @@ public class Interval {
         start = s;
         end = e;
     }
+
+    @Override
+    public String toString() {
+        return "Interval{" +
+                "start=" + start +
+                ", end=" + end +
+                '}';
+    }
 }
