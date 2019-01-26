@@ -1,7 +1,7 @@
 package lw.learn.utils;
 
-import lw.learn.ds.Graph;
-import lw.learn.ds.wg.WeightGraph;
+//import lw.learn.ds.Graph;
+//import lw.learn.ds.wg.WeightGraph;
 import org.junit.Test;
 
 import java.io.BufferedInputStream;
@@ -74,6 +74,7 @@ public class FileOperation {
                 return i;
         return s.length();
     }
+    /*
 
     public static Graph readGrap(Class< ? extends Graph> graph,boolean directed, String filename)  {
 
@@ -125,6 +126,7 @@ public class FileOperation {
             return null;
         }
     }
+    */
 
     private static Scanner getScanner(String filename) {
         if (filename == null) {

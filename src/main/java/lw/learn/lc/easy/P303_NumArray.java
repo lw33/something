@@ -1,6 +1,6 @@
 package lw.learn.lc.easy;
 
-import lw.learn.ds.SegmentTree;
+//import lw.learn.ds.SegmentTree;
 
 /**
  * @Author lw
@@ -9,7 +9,7 @@ import lw.learn.ds.SegmentTree;
 public class P303_NumArray {
 
 
-    private SegmentTree<Integer> segmentTree;
+   /* private SegmentTree<Integer> segmentTree;
 
 
     public P303_NumArray(int[] nums) {
@@ -23,7 +23,7 @@ public class P303_NumArray {
 
     public int sumRange(int i, int j) {
         return segmentTree.query(i, j);
-    }
+    }*/
 
 
 }

@@ -1,9 +1,9 @@
 package lw.learn.p.z.stackAndQueue;
 
 
-import lw.learn.ds.ArrayStack;
-import lw.learn.ds.Stack;
 import org.junit.Test;
+
+import java.util.Stack;
 
 /**
  * @Author lw
@@ -33,7 +33,7 @@ public class ReverseStack {
 
     @Test
     public void test() {
-        Stack<Integer> stack = new ArrayStack<>();
+        Stack<Integer> stack = new Stack<>();
         stack.push(3);
         stack.push(2);
         stack.push(1);

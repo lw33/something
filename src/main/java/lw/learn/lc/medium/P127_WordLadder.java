@@ -1,13 +1,8 @@
 package lw.learn.lc.medium;
 
-import lw.learn.algorithm.graph.ShortestPath;
-import lw.learn.ds.DenseGraph;
-import lw.learn.ds.Graph;
-import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+//import lw.learn.algorithm.graph.ShortestPath;
+//import lw.learn.ds.DenseGraph;
+//import lw.learn.ds.Graph;
 
 /**
  * @Author lw
@@ -15,7 +10,7 @@ import java.util.List;
  **/
 public class P127_WordLadder {
 
-    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+  /*  public int ladderLength(String beginWord, String endWord, List<String> wordList) {
 
         int index = 0;
         for (; index < wordList.size(); index++) {
@@ -54,12 +49,12 @@ public class P127_WordLadder {
         shortestPath.showPath(index);
         return length == -1 ? 0 : length + 1;
     }
-
-    @Test
+*/
+   /* @Test
     public void test() {
         String[] words = {"hot","dot","dog","lot","log","cog" };
         List<String> list = new ArrayList<>();
         list.addAll(Arrays.asList(words));
         System.out.println(this.ladderLength("hit", "cog", list));
-    }
+    }*/
 }
