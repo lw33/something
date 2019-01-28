@@ -24,6 +24,19 @@ public class P203_RemoveElements {
         return faker.next;
     }
 
+    public ListNode removeElementsRecursion(ListNode head, int val) {
+        if (head == null) {
+            return null;
+        }
+        //if (head.val == val) {
+        //    return removeElements(head.next, val);
+        //}
+        //head.next = removeElements(head.next, val);
+        //return head;
+        head.next = removeElements(head.next, val);
+        return head.val == val ? head.next : head;
+    }
+
     @Test
     public void test() {
         // 1,2,6,3,4,5,6

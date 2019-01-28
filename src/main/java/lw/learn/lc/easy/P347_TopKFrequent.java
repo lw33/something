@@ -2,10 +2,7 @@ package lw.learn.lc.easy;
 
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * @Author lw
@@ -33,7 +30,32 @@ public class P347_TopKFrequent {
 
         }
     }
+    public List<Integer> topKFrequent2(int[] nums, int k) {
 
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+                map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.comparing(map::get));
+        map.forEach((key, value) -> {
+            if (pq.size() < k) {
+                pq.add(key);
+            } else {
+                if (map.get(pq.peek()) < value) {
+                    pq.poll();
+                    pq.add(key);
+                }
+            }
+        });
+
+        LinkedList<Integer> list = new LinkedList<>();
+        while (!pq.isEmpty()) {
+            list.addFirst(pq.poll());
+        }
+
+        return list;
+    }
     public List<Integer> topKFrequent(int[] nums, int k) {
 
         HashMap<Integer, Integer> map = new HashMap<>();
