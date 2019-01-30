@@ -1,4 +1,4 @@
-package lw.learn.lc.hash;
+package lw.learn.lc.map;
 
 import java.util.HashSet;
 

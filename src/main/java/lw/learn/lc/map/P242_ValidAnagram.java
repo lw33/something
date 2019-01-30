@@ -1,4 +1,4 @@
-package lw.learn.lc.hash;
+package lw.learn.lc.map;
 
 /**
  * @Author lw
@@ -18,7 +18,6 @@ public class P242_ValidAnagram {
             hash[sChars[i] - 'a']++;
             hash[tChars[i] - 'a']--;
         }
-
         for (int i : hash) {
             if (i != 0) {
                 return false;

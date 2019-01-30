@@ -24,7 +24,7 @@ public class IndexHeap1<Item> {
         this.capacity = capacity;
         this.comparator = comparator;
         indexes = new int[capacity];
-        data = (Item[]) new Object[DEFAULT_QUEUE_SIZE];
+        data = (Item[]) new Object[capacity];
     }
 
     public IndexHeap1(Comparator<Item> comparator) {
