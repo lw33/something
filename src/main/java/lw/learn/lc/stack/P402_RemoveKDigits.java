@@ -20,33 +20,45 @@ public class P402_RemoveKDigits {
         }
         char[] chars = num.toCharArray();
         LinkedList<Character> dbq = new LinkedList<>();
-        int i = 0;
-        for (; i < chars.length; i++) {
+        for (int i = 0; i < chars.length; i++) {
+            if (k == 0) {
+                dbq.push(chars[i]);
+                continue;
+            }
+
+            while (!dbq.isEmpty() && dbq.peek() > chars[i]) {
+                dbq.poll();
+                --k;
+                if (k == 0) {
+                    break;
+                }
+            }
             if (dbq.isEmpty()) {
                 if (chars[i] != '0') {
                     dbq.push(chars[i]);
                 }
-            } else {
-                Character peek = dbq.peek();
-                if (peek > chars[i]) {
-                    dbq.poll();
-                    dbq.push(chars[i]);
-                }
-                --k;
+                continue;
             }
-            if (k == -1) {
-                break;
+            Character peek = dbq.peek();
+            if (peek > chars[i]) {
+                dbq.push(chars[i]);
+            } else if (peek == chars[i]) {
+                dbq.push(chars[i]);
+            } else {
+                --k;
             }
         }
         StringBuilder sb = new StringBuilder();
-        while (!dbq.isEmpty()&&dbq.peekFirst() == '0') {
-            dbq.removeFirst();
+        while (!dbq.isEmpty() && dbq.peekLast() == '0') {
+            dbq.removeLast();
         }
         while (!dbq.isEmpty()) {
-            sb.append(dbq.removeFirst());
-        }
-        if (i < chars.length) {
-            sb.append(num.substring(i));
+            Character character = dbq.removeLast();
+            if (k == 0) {
+                sb.append(character);
+            } else {
+                --k;
+            }
         }
         String s = sb.toString();
         if ("".equals(s)) {
@@ -57,8 +69,8 @@ public class P402_RemoveKDigits {
 
     @Test
     public void test() {
-        String num = "10200";
-        int k = 1;
+        String num = "996414";
+        int k = 3;
         System.out.println(this.removeKdigits(num, k));
     }
 }
