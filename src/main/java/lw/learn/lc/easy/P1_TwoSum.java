@@ -20,10 +20,8 @@ public class P1_TwoSum {
             int find = target - numbers[i];
             if (map.containsKey(find)) {
                 return new int[]{i, map.get(find)};
-            } else {
-                map.put(numbers[i], i);
             }
-
+            map.put(numbers[i], i);
         }
         return null;
     }

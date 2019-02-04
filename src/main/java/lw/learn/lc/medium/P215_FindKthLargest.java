@@ -1,6 +1,7 @@
 package lw.learn.lc.medium;
 
 
+import lw.learn.utils.LCUtils;
 import org.junit.Test;
 
 import java.util.PriorityQueue;
@@ -28,14 +29,51 @@ public class P215_FindKthLargest {
     }
 
     public int findKthLargestPartition(int[] nums, int k) {
-        for (int num : nums) {
-            
+
+        return findKthLargest(nums, 0, nums.length - 1, k - 1);
+    }
+
+    private int findKthLargest(int[] nums, int l, int r, int k) {
+
+        if (r >= l) {
+
+            int partition = partition(nums, l, r);
+            if (partition == k) {
+                return nums[partition];
+            } else if (k < partition) {
+                return findKthLargest(nums, l, partition - 1, k);
+            } else {
+                return findKthLargest(nums, partition + 1, r, k);
+            }
+
         }
-        return 0;
+        return -1;
+    }
+
+    private int partition(int[] nums, int l, int r) {
+
+        int less = r;
+        while (less > l) {
+            if (nums[l] <= nums[r]) {
+                swap(nums, l, --less);
+            } else {
+                l++;
+            }
+        }
+        swap(nums, l, r);
+        return l;
+    }
+
+    public void swap(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
     }
 
     @Test
     public void test() {
-        System.out.println(Integer.MIN_VALUE);
+        int[] arr = LCUtils.stringToIntegerArray("[1]");
+        System.out.println(this.findKthLargestPartition(arr, 1));
+        //System.out.println(partition(arr, 0, arr.length - 1));
     }
 }
