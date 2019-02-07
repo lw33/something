@@ -52,5 +52,13 @@ public class ArrayHelper {
         return true;
     }
 
+    public static int indexOfArray(int[] arr, int start, int end, int target) {
 
+        for (int i = start; i <= end; i++) {
+            if (arr[i] == target) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
