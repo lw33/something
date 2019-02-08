@@ -22,7 +22,7 @@ public class P99_RecoverBinarySearchTree {
         boolean hasReverseNode = false;
         TreeNode revNode1 = null;
         TreeNode revNode2 = null;
-        TreeNode revNode3 = null;
+        TreeNode revNode3;
         while (!stack.isEmpty() || root != null) {
             if (root != null) {
                 stack.push(root);
