@@ -7,13 +7,13 @@ package lw.learn.lc.medium;
 public class P96_UniqueBinarySearchTrees {
 
     public int numTrees(int n) {
-        int count=0;
+        int count = 0;
 
-        if(n<2) return 1;
-        if(2==n) return n;
+        if (n < 2) return 1;
+        if (2 == n) return n;
 
-        for(int i=0; i<n; ++i)
-            count += numTrees(i) * numTrees(n-i-1);
+        for (int i = 0; i < n; ++i)
+            count += numTrees(i) * numTrees(n - i - 1);
 
         return count;
     }
