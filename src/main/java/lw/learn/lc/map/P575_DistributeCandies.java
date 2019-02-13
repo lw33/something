@@ -8,6 +8,12 @@ import java.util.HashSet;
  **/
 public class P575_DistributeCandies {
 
+    /**
+     * 找出糖果种类 与 糖果 的一般进行比较
+     *
+     * @param candies
+     * @return
+     */
     public int distributeCandies(int[] candies) {
 
         HashSet<Integer> set = new HashSet<>();
