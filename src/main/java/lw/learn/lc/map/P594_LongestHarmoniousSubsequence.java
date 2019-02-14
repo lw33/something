@@ -28,11 +28,11 @@ public class P594_LongestHarmoniousSubsequence {
         for (int num : nums) {
             Integer ltOne = map.getOrDefault(num + 1, 0);
             Integer gtOne = map.getOrDefault(num - 1, 0);
-            Integer eq = map.getOrDefault(num, 0);
+            int eq = map.getOrDefault(num, 0) + 1;
             if (ltOne > 0 || gtOne > 0) {
-                max = Math.max(max, 1 + eq + Math.max(ltOne, gtOne));
+                max = Math.max(max, eq + Math.max(ltOne, gtOne));
             }
-            map.put(num, eq + 1);
+            map.put(num, eq);
         }
         return max;
     }
