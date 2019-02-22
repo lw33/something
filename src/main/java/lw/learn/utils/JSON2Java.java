@@ -26,6 +26,16 @@ public class JSON2Java {
         return arr;
     }
 
+    public static char[][] json2char2Array(String str) {
+        List<char[]> ints = JSON.parseArray(str, char[].class);
+        char[][] arr = new char[ints.size()][ints.get(0).length];
+        for (int i = 0; i < ints.size(); i++) {
+            for (int j = 0; j < ints.get(0).length; j++) {
+                arr[i][j] = ints.get(i)[j];
+            }
+        }
+        return arr;
+    }
     public static int[] list2intArray(List<Integer> list) {
         int[] arr = new int[list.size()];
         for (int i = 0; i < list.size(); i++) {
