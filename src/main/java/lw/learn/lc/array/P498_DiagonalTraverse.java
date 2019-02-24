@@ -39,15 +39,13 @@ public class P498_DiagonalTraverse {
     }
 
     private int findDiagonalOrder(int[][] matrix, int[] res, int index, int ax, int ay, int bx, int by, boolean up) {
-        // 次数
-        int times = by - ay;
         if (up) {
-            for (int i = 0; i <= times; i++) {
-                res[index++] = matrix[ax - i][ay + i];
+            while (ax >= bx) {
+                res[index++] = matrix[ax--][ay++];
             }
         } else {
-            for (int i = 0; i <= times; i++) {
-                res[index++] = matrix[bx + i][by - i];
+            while (ax >= bx) {
+                res[index++] = matrix[bx++][by--];
             }
         }
         return index;
