@@ -10,11 +10,59 @@ import org.junit.Test;
 public class P718_MaximumLengthOfRepeatedSubarray {
 
     public int findLength(int[] A, int[] B) {
+        if (A.length == 0 || B.length == 0) {
+            return 0;
+        }
 
+        int[][] dp = new int[A.length][B.length];
+        for (int i = 0; i < A.length; i++) {
+            dp[i][0] = A[i] == B[0] ? 1 : 0;
+        }
 
-        //return findLength(A, B, A.length - 1, B.length - 1);
+        for (int i = 1; i < B.length; i++) {
+            dp[0][i] = A[0] == B[i] ? 1 : 0;
+        }
+        int max = 0;
+        for (int i = 1; i < A.length; i++) {
+            for (int j = 1; j < B.length; j++) {
+                if (A[i] == B[j]) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                    if (max < dp[i][j]) {
+                        max = dp[i][j];
+                    }
+                }
+            }
+        }
 
-        return 0;
+        return max;
+    }
+
+    public int findLength2(int[] A, int[] B) {
+        if (A.length == 0 || B.length == 0) {
+            return 0;
+        }
+
+        int[] dp = new int[A.length];
+        for (int i = 0; i < B.length; i++) {
+            dp[i] = A[0] == B[i] ? 1 : 0;
+        }
+
+        int max = 0;
+        for (int i = 1; i < A.length; i++) {
+            for (int j = B.length - 1; j > 0; j--) {
+                if (A[i] == B[j]) {
+                    dp[j] = dp[j - 1] + 1;
+                    if (max < dp[j]) {
+                        max = dp[j];
+                    }
+                } else {
+                    dp[j] = 0;
+                }
+            }
+            dp[0] = A[i] == B[0] ? 1 : 0;
+        }
+
+        return max;
     }
 
     /**
