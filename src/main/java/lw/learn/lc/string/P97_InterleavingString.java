@@ -6,8 +6,54 @@ import org.junit.Test;
  * @Author lw
  * @Date 2019-01-16 21:26:56
  **/
-// FIXME 2019/1/16  待优化。。。
 public class P97_InterleavingString {
+
+    @Test
+    public void testDP() {
+        String s1 = "aabcc", s2 = "dbbca", s3 = "aadbbcbcac";
+        System.out.println(this.isInterleaveDP(s1, s2, s3));
+    }
+
+    public boolean isInterleaveDP(String s1, String s2, String s3) {
+
+        if (s1.length() + s2.length() != s3.length()) {
+            return false;
+        }
+
+        char[] a = s1.toCharArray();
+        char[] b = s2.toCharArray();
+        char[] c = s3.toCharArray();
+
+        boolean[][] dp = new boolean[a.length + 1][b.length + 1];
+        dp[0][0] = true;
+        for (int i = 1; i <= a.length; i++) {
+            if (dp[i - 1][0]) {
+                dp[i][0] = a[i - 1] == c[i - 1];
+            } else {
+                break;
+            }
+        }
+
+        for (int j = 1; j <= b.length; j++) {
+            if (dp[0][j - 1]) {
+                dp[0][j] = b[j - 1] == c[j - 1];
+            } else {
+                break;
+            }
+        }
+
+        for (int i = 1; i <= a.length; i++) {
+            for (int j = 1; j <= b.length; j++) {
+                if ((dp[i - 1][j] && a[i - 1] == c[i + j - 1]) ||
+                        (dp[i][j - 1] && b[j - 1] == c[i + j - 1])) {
+                    dp[i][j] = true;
+                }
+            }
+        }
+
+        return dp[a.length][b.length];
+    }
+
 
     public boolean isInterleave(String s1, String s2, String s3) {
         if (s1.length() + s2.length() != s3.length()) {
