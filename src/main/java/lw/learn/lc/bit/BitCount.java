@@ -20,4 +20,6 @@ public class BitCount {
     public void test() {
         System.out.println(swar(127));
     }
+
+
 }
