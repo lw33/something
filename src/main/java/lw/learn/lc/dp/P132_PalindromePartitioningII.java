@@ -36,17 +36,19 @@ public class P132_PalindromePartitioningII {
             return 0;
         }
 
+        char[] str = s.toCharArray();
+        if (isPalindrome(str, 0, str.length - 1)) {
+            return 0;
+        }
         // preparation
-        boolean[][] isPalindrome = getIsPalindrome(s.toCharArray());
+        boolean[][] isPalindrome = getIsPalindrome(str);
 
         // initialize
-        int[] f = new int[s.length() + 1];
-        for (int i = 0; i <= s.length(); i++) {
-            f[i] = i - 1;
-        }
+        int[] f = new int[str.length + 1];
 
         // main
-        for (int i = 1; i <= s.length(); i++) {
+        for (int i = 1; i <= str.length; i++) {
+            f[i] = i;
             for (int j = 0; j < i; j++) {
                 if (isPalindrome[j][i - 1]) {
                     f[i] = Math.min(f[i], f[j] + 1);
@@ -54,8 +56,20 @@ public class P132_PalindromePartitioningII {
             }
         }
 
-        return f[s.length()];
+        return f[str.length] - 1;
     }
+
+    public boolean isPalindrome(char[] chars, int i, int j) {
+        while (i < j) {
+            if (chars[i] != chars[j]) {
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+
 
     public int minCut_(String s) {
         if (s.length() < 2) {
@@ -87,16 +101,6 @@ public class P132_PalindromePartitioningII {
         return cut;
     }
 
-    public boolean isPalindrome(char[] chars, int i, int j) {
-        while (i < j) {
-            if (chars[i] != chars[j]) {
-                return false;
-            }
-            i++;
-            j--;
-        }
-        return true;
-    }
 
     @Test
     public void test() {
