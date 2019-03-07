@@ -11,6 +11,16 @@ import java.util.LinkedList;
  **/
 public class P402_RemoveKDigits {
 
+    /**
+     * 栈中数据 是递增的 可以等于
+     * 当有数据 小于栈顶元素时 循环弹出栈顶
+     * 如果出现 0 且最后 栈弹空了 0 不加入栈
+     * 最后 如果 k 不为 0 此时 栈中的元素为 从小到大 继续弹出栈顶
+     *
+     * @param num
+     * @param k
+     * @return
+     */
     public String removeKdigits(String num, int k) {
         if (k == 0) {
             return num;
@@ -19,58 +29,39 @@ public class P402_RemoveKDigits {
             return "0";
         }
         char[] chars = num.toCharArray();
+        // 双端队列 模拟栈
         LinkedList<Character> dbq = new LinkedList<>();
         for (int i = 0; i < chars.length; i++) {
             if (k == 0) {
                 dbq.push(chars[i]);
                 continue;
             }
-
-            while (!dbq.isEmpty() && dbq.peek() > chars[i]) {
-                dbq.poll();
-                --k;
-                if (k == 0) {
-                    break;
-                }
+            while (!dbq.isEmpty() && k > 0 && chars[i] < dbq.peek()) {
+                dbq.pop();
+                k--;
             }
-            if (dbq.isEmpty()) {
-                if (chars[i] != '0') {
-                    dbq.push(chars[i]);
-                }
+            if (dbq.isEmpty() && chars[i] == '0') {
                 continue;
             }
-            Character peek = dbq.peek();
-            if (peek > chars[i]) {
-                dbq.push(chars[i]);
-            } else if (peek == chars[i]) {
-                dbq.push(chars[i]);
-            } else {
-                --k;
-            }
+            dbq.push(chars[i]);
+        }
+        for (int i = 0; i < k; i++) {
+            dbq.pop();
         }
         StringBuilder sb = new StringBuilder();
-        while (!dbq.isEmpty() && dbq.peekLast() == '0') {
-            dbq.removeLast();
-        }
+        // 因为元素为逆序 所以使用双端队列 方便弹出恢复顺序
         while (!dbq.isEmpty()) {
-            Character character = dbq.removeLast();
-            if (k == 0) {
-                sb.append(character);
-            } else {
-                --k;
-            }
+            sb.append(dbq.pollLast());
         }
-        String s = sb.toString();
-        if ("".equals(s)) {
-            return "0";
-        }
-        return s;
+
+
+        return sb.length() == 0 ? "0" : sb.toString();
     }
 
     @Test
     public void test() {
-        String num = "996414";
-        int k = 3;
+        String num = "112";
+        int k = 1;
         System.out.println(this.removeKdigits(num, k));
     }
 }
