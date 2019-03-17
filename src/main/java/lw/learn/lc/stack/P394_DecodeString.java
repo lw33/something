@@ -1,7 +1,7 @@
 package lw.learn.lc.stack;
 
 
-import java.util.LinkedList;
+import org.junit.Test;
 
 /**
  * @Author lw
@@ -9,36 +9,39 @@ import java.util.LinkedList;
  **/
 public class P394_DecodeString {
 
+    int i = 0;
+
     public String decodeString(String s) {
 
         char[] chars = s.toCharArray();
-        LinkedList<Integer> times = new LinkedList<>();
-        LinkedList<Character> alpha = new LinkedList<>();
-        LinkedList<Character> popStack = new LinkedList<>();
-        int pre = 0;
-        for (int i = 0; i < chars.length; i++) {
-            if (chars[i] == '[') {
-                times.addFirst(pre);
-                alpha.addFirst(chars[i]);
-                pre = 0;
-            } else if (chars[i] >= '0' && chars[i] <= '9') {
-                pre = pre * 10 + chars[i] - '0';
-            } else if (chars[i] == ']') {
-                boolean pushBack = false;
-                while (!alpha.isEmpty()) {
-                    if (alpha.getFirst() == '[') {
-                        alpha.removeFirst();
-                        break;
-                    }
-                    popStack.addFirst(alpha.removeFirst());
+
+        return decodeString(chars);
+    }
+
+    private String decodeString(char[] chars) {
+
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+        for (; i < chars.length && chars[i] != ']'; i++) {
+            if (chars[i] <= '9' && chars[i] >= '0') {
+                count = count * 10 + chars[i] - '0';
+            } else if (chars[i] == '[') {
+                i++;
+                String s = decodeString(chars);
+                for (int j = 0; j < count; j++) {
+                    sb.append(s);
                 }
-
-                pushBack = !alpha.isEmpty();
-
+                count = 0;
             } else {
-                alpha.addFirst(chars[i]);
+                sb.append(chars[i]);
             }
         }
-        return "";
+        return sb.toString();
+    }
+
+    @Test
+    public void test() {
+        String s = "3[a]2[bc]";
+        System.out.println(this.decodeString(s));
     }
 }

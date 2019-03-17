@@ -2,6 +2,7 @@ package lw.learn.utils;
 
 import com.alibaba.fastjson.JSON;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,4 +45,17 @@ public class JSON2Java {
         return arr;
     }
 
+    @SuppressWarnings("unchecked")
+    public static <T> List<List<T>> jsonTo2List(String s) {
+        List<List> lists = JSON.parseArray(s, List.class);
+        List<List<T>> res = new ArrayList<>();
+        for (List list : lists) {
+            List<T> tmp = new ArrayList<>();
+            for (Object o : list) {
+                tmp.add((T) o);
+            }
+            res.add(tmp);
+        }
+        return res;
+    }
 }
