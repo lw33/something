@@ -1,5 +1,8 @@
 package lw.learn.lc.hard;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Author lw
  * @Date 2018-10-21 23:22:46
@@ -27,6 +30,32 @@ package lw.learn.lc.hard;
 public class P128_LongestConsecutive {
 
     public int longestConsecutive(int[] nums) {
-        return 0;
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        Map<Integer, Integer> map = new HashMap<>();
+        int max = 1;
+        for (int num : nums) {
+            if (!map.containsKey(num)) {
+                map.put(num, 1);
+                if (map.containsKey(num - 1)) {
+                    max = Math.max(merge(map, num - 1, num), max);
+                }
+                if (map.containsKey(num + 1)) {
+                    max = Math.max(merge(map, num, num + 1), max);
+                }
+            }
+        }
+        return max;
+    }
+
+    public int merge(Map<Integer, Integer> map, int less, int more) {
+        int left = less - map.get(less) + 1;
+        int rigth = more + map.get(more) - 1;
+        int len = rigth - left + 1;
+        map.put(left, len);
+        map.put(rigth, len);
+        return len;
     }
 }
