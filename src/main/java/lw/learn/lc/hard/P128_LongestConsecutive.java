@@ -26,7 +26,6 @@ import java.util.Map;
  *
  *
  **/
-// TODO: 2018/11/25  P128_LongestConsecutive
 public class P128_LongestConsecutive {
 
     public int longestConsecutive(int[] nums) {
